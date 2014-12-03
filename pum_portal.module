@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pum Portal feature.
+ */
+
+include_once 'pum_portal.features.inc';
