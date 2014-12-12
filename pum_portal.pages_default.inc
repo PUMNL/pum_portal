@@ -61,8 +61,9 @@ function pum_portal_default_page_manager_handlers() {
         'width' => 100,
         'width_type' => '%',
         'children' => array(
-          0 => 1,
-          1 => 'main-row',
+          0 => 2,
+          1 => 1,
+          2 => 'main-row',
         ),
         'parent' => 'canvas',
       ),
@@ -108,6 +109,32 @@ function pum_portal_default_page_manager_handlers() {
         'parent' => '1',
         'class' => '',
       ),
+      2 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'topleft',
+          1 => 'topright',
+        ),
+        'parent' => 'main',
+        'class' => '',
+      ),
+      'topleft' => array(
+        'type' => 'region',
+        'title' => 'topleft',
+        'width' => '50',
+        'width_type' => '%',
+        'parent' => '2',
+        'class' => '',
+      ),
+      'topright' => array(
+        'type' => 'region',
+        'title' => 'topright',
+        'width' => '50',
+        'width_type' => '%',
+        'parent' => '2',
+        'class' => '',
+      ),
     ),
   );
   $display->panel_settings = array(
@@ -116,6 +143,8 @@ function pum_portal_default_page_manager_handlers() {
       'center' => NULL,
       'right' => NULL,
       'top' => NULL,
+      'topleft' => NULL,
+      'topright' => NULL,
     ),
   );
   $display->cache = array();
@@ -197,80 +226,6 @@ function pum_portal_default_page_manager_handlers() {
     $pane->uuid = '8008d3d9-b438-4602-878d-0165c1b32adc';
     $display->content['new-8008d3d9-b438-4602-878d-0165c1b32adc'] = $pane;
     $display->panels['center'][1] = 'new-8008d3d9-b438-4602-878d-0165c1b32adc';
-    $pane = new stdClass();
-    $pane->pid = 'new-3056d31d-f7a6-4937-b18b-15c722fde808';
-    $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'country_experts';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '5',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block',
-      'context' => array(
-        0 => 'argument_term_1.field-country-id',
-      ),
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $pane->uuid = '3056d31d-f7a6-4937-b18b-15c722fde808';
-    $display->content['new-3056d31d-f7a6-4937-b18b-15c722fde808'] = $pane;
-    $display->panels['center'][2] = 'new-3056d31d-f7a6-4937-b18b-15c722fde808';
-    $pane = new stdClass();
-    $pane->pid = 'new-41e72a07-81a5-44ba-a9c2-68a21283ea69';
-    $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'country_experts';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '5',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block_1',
-      'context' => array(
-        0 => 'argument_term_1.field_country_id',
-      ),
-      'override_title' => 1,
-      'override_title_text' => 'Coordinator',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $pane->locks = array();
-    $pane->uuid = '41e72a07-81a5-44ba-a9c2-68a21283ea69';
-    $display->content['new-41e72a07-81a5-44ba-a9c2-68a21283ea69'] = $pane;
-    $display->panels['center'][3] = 'new-41e72a07-81a5-44ba-a9c2-68a21283ea69';
     $pane = new stdClass();
     $pane->pid = 'new-77a59b84-3da4-4c4d-a311-adada0a3956d';
     $pane->panel = 'right';
@@ -369,6 +324,149 @@ function pum_portal_default_page_manager_handlers() {
     $pane->uuid = '886f81fe-65f9-46f4-a47f-ed50be2079a6';
     $display->content['new-886f81fe-65f9-46f4-a47f-ed50be2079a6'] = $pane;
     $display->panels['top'][0] = 'new-886f81fe-65f9-46f4-a47f-ed50be2079a6';
+    $pane = new stdClass();
+    $pane->pid = 'new-0bed3bc4-78e5-4c44-b59f-951aaac3293b';
+    $pane->panel = 'topleft';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'taxonomy_term:field_flag';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'image',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(
+        'image_style' => '',
+        'image_link' => '',
+      ),
+      'context' => 'argument_term_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '0bed3bc4-78e5-4c44-b59f-951aaac3293b';
+    $display->content['new-0bed3bc4-78e5-4c44-b59f-951aaac3293b'] = $pane;
+    $display->panels['topleft'][0] = 'new-0bed3bc4-78e5-4c44-b59f-951aaac3293b';
+    $pane = new stdClass();
+    $pane->pid = 'new-41e72a07-81a5-44ba-a9c2-68a21283ea69';
+    $pane->panel = 'topright';
+    $pane->type = 'views';
+    $pane->subtype = 'country_experts';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '5',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block_1',
+      'context' => array(
+        0 => 'argument_term_1.field_country_id',
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '41e72a07-81a5-44ba-a9c2-68a21283ea69';
+    $display->content['new-41e72a07-81a5-44ba-a9c2-68a21283ea69'] = $pane;
+    $display->panels['topright'][0] = 'new-41e72a07-81a5-44ba-a9c2-68a21283ea69';
+    $pane = new stdClass();
+    $pane->pid = 'new-165a767f-8c4a-432d-8fe5-7353c0f85c98';
+    $pane->panel = 'topright';
+    $pane->type = 'views';
+    $pane->subtype = 'country_experts';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 1,
+      'nodes_per_page' => '10',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block_3',
+      'context' => array(
+        0 => 'argument_term_1.field-country-id',
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '165a767f-8c4a-432d-8fe5-7353c0f85c98';
+    $display->content['new-165a767f-8c4a-432d-8fe5-7353c0f85c98'] = $pane;
+    $display->panels['topright'][1] = 'new-165a767f-8c4a-432d-8fe5-7353c0f85c98';
+    $pane = new stdClass();
+    $pane->pid = 'new-42118dfd-8f41-4eb6-a0ae-9e2778882276';
+    $pane->panel = 'topright';
+    $pane->type = 'views';
+    $pane->subtype = 'country_experts';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 1,
+      'nodes_per_page' => '10',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block_2',
+      'context' => array(
+        0 => 'argument_term_1.field-country-id',
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $pane->uuid = '42118dfd-8f41-4eb6-a0ae-9e2778882276';
+    $display->content['new-42118dfd-8f41-4eb6-a0ae-9e2778882276'] = $pane;
+    $display->panels['topright'][2] = 'new-42118dfd-8f41-4eb6-a0ae-9e2778882276';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-8e001eef-3a6e-4e65-91e3-2d818cc6e66e';
   $handler->conf['display'] = $display;

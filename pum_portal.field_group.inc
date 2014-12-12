@@ -28,6 +28,7 @@ function pum_portal_field_group_info() {
       2 => 'field_pum_private',
       3 => 'field_pum_sector',
       4 => 'field_tags',
+      5 => 'flag_subscribe_to_this_forum_topic',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -64,6 +65,7 @@ function pum_portal_field_group_info() {
       2 => 'field_pum_private',
       3 => 'field_pum_sector',
       4 => 'field_tags',
+      5 => 'flag_subscribe_to_this_blog_page',
     ),
     'format_type' => 'div',
     'format_settings' => array(

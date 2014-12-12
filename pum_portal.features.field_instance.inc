@@ -1360,6 +1360,60 @@ function pum_portal_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-countries-field_flag'
+  $field_instances['taxonomy_term-countries-field_flag'] = array(
+    'bundle' => 'countries',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'medium',
+        ),
+        'type' => 'image',
+        'weight' => 4,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_flag',
+    'label' => 'flag',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'epsacrop' => array(
+        'styles' => array(
+          'epsa_banner' => 0,
+          'epsa_slider' => 0,
+          'thumbnail_stories_customer' => 0,
+          'thumbnail_stories_regular' => 0,
+          'user_picture' => 0,
+        ),
+      ),
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-countries-field_iso_number_code'
   $field_instances['taxonomy_term-countries-field_iso_number_code'] = array(
     'bundle' => 'countries',
@@ -1643,9 +1697,9 @@ function pum_portal_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'i18n_taxonomy',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 5,
       ),
     ),
@@ -1691,6 +1745,7 @@ function pum_portal_field_default_field_instances() {
   t('Which country does this forum item apply to?');
   t('Which generic topic does this forum item apply to?');
   t('Which sector does this forum item apply to?');
+  t('flag');
   t('pum_coordinator_id');
   t('pum_tag_id');
 

@@ -30,8 +30,28 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'display_name' => 'display_name',
+    'description' => 'description',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'display_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'description' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Relationship: CiviCRM Relationships: Contact ID A */
   $handler->display->display_options['relationships']['contact_id_a_']['id'] = 'contact_id_a_';
   $handler->display->display_options['relationships']['contact_id_a_']['table'] = 'civicrm_relationship';
@@ -45,8 +65,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
   $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['relationship'] = 'contact_id_b_';
-  $handler->display->display_options['fields']['display_name']['label'] = '';
-  $handler->display->display_options['fields']['display_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['display_name']['label'] = 'Expert';
   $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
   /* Field: CiviCRM Relationships: Start Date */
   $handler->display->display_options['fields']['start_date']['id'] = 'start_date';
@@ -81,24 +100,56 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['relationship_type']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['relationship_type']['field'] = 'relationship_type';
   $handler->display->display_options['filters']['relationship_type']['value'] = array(
+    21 => '21',
     30 => '30',
   );
+  /* Filter criterion: CiviCRM Relationships: Is Relationship Active */
+  $handler->display->display_options['filters']['is_active']['id'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['value'] = '1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'country-experts';
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Block exp */
+  $handler = $view->new_display('block', 'Block exp', 'block');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
+  /* Display: Block cc */
+  $handler = $view->new_display('block', 'Block cc', 'block_1');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: CiviCRM Contacts: Contact ID */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['fields']['id']['relationship'] = 'contact_id_b_';
+  $handler->display->display_options['fields']['id']['label'] = '';
+  $handler->display->display_options['fields']['id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['id']['separator'] = '';
+  /* Field: CiviCRM Contacts: Display Name */
+  $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['relationship'] = 'contact_id_b_';
+  $handler->display->display_options['fields']['display_name']['label'] = 'Coordinator';
+  $handler->display->display_options['fields']['display_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['display_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['display_name']['alter']['path'] = 'portal/directory/[id]';
+  $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
+  /* Field: CiviCRM Relationships: Description */
+  $handler->display->display_options['fields']['description']['id'] = 'description';
+  $handler->display->display_options['fields']['description']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['fields']['description']['field'] = 'description';
+  $handler->display->display_options['fields']['description']['label'] = '';
+  $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: CiviCRM Relationships: Relationship Type A-to-B */
@@ -108,6 +159,60 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['relationship_type']['value'] = array(
     14 => '14',
   );
+  /* Filter criterion: CiviCRM Relationships: Is Relationship Active */
+  $handler->display->display_options['filters']['is_active']['id'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['value'] = '1';
+
+  /* Display: Block rep */
+  $handler = $view->new_display('block', 'Block rep', 'block_2');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: CiviCRM Contacts: Display Name */
+  $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['relationship'] = 'contact_id_b_';
+  $handler->display->display_options['fields']['display_name']['label'] = 'Representative';
+  $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
+  /* Field: CiviCRM Relationships: Description */
+  $handler->display->display_options['fields']['description']['id'] = 'description';
+  $handler->display->display_options['fields']['description']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['fields']['description']['field'] = 'description';
+  $handler->display->display_options['fields']['description']['label'] = '';
+  $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
+
+  /* Display: Block po */
+  $handler = $view->new_display('block', 'Block po', 'block_3');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: CiviCRM Contacts: Display Name */
+  $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['relationship'] = 'contact_id_b_';
+  $handler->display->display_options['fields']['display_name']['label'] = 'Project Officer';
+  $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
+  /* Field: CiviCRM Relationships: Description */
+  $handler->display->display_options['fields']['description']['id'] = 'description';
+  $handler->display->display_options['fields']['description']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['fields']['description']['field'] = 'description';
+  $handler->display->display_options['fields']['description']['label'] = '';
+  $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: CiviCRM Relationships: Relationship Type A-to-B */
+  $handler->display->display_options['filters']['relationship_type']['id'] = 'relationship_type';
+  $handler->display->display_options['filters']['relationship_type']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['relationship_type']['field'] = 'relationship_type';
+  $handler->display->display_options['filters']['relationship_type']['value'] = array(
+    19 => '19',
+    30 => '30',
+  );
+  /* Filter criterion: CiviCRM Relationships: Is Relationship Active */
+  $handler->display->display_options['filters']['is_active']['id'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['value'] = '1';
   $translatables['country_experts'] = array(
     t('Master'),
     t('Expert'),
@@ -130,7 +235,14 @@ function pum_portal_views_default_views() {
     t('End Date'),
     t('All'),
     t('Page'),
-    t('Block'),
+    t('Block exp'),
+    t('Block cc'),
+    t('.'),
+    t('Coordinator'),
+    t('Block rep'),
+    t('Representative'),
+    t('Block po'),
+    t('Project Officer'),
   );
   $export['country_experts'] = $view;
 
@@ -1060,6 +1172,11 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
     'sector' => 'sector',
     'tags' => 0,
   );
+  /* Sort criterion: Content: Sticky */
+  $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['table'] = 'node';
+  $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -4100,6 +4217,7 @@ return implode("+",$tids);';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
@@ -4108,6 +4226,7 @@ return implode("+",$tids);';
   $handler->display->display_options['filters']['machine_name']['value'] = array(
     'countries' => 'countries',
   );
+  $handler->display->display_options['filters']['machine_name']['group'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -4388,6 +4507,108 @@ Delete members of <?php print $tname; ?>
     t('Page'),
   );
   $export['portal_delete_members'] = $view;
+
+  $view = new view();
+  $view->name = 'portal_my_communities';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'Portal My Communities';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Portal My Communities';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access user profiles';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Field: Country */
+  $handler->display->display_options['fields']['field_pum_country']['id'] = 'field_pum_country';
+  $handler->display->display_options['fields']['field_pum_country']['table'] = 'field_data_field_pum_country';
+  $handler->display->display_options['fields']['field_pum_country']['field'] = 'field_pum_country';
+  $handler->display->display_options['fields']['field_pum_country']['delta_offset'] = '0';
+  /* Field: Field: Sector */
+  $handler->display->display_options['fields']['field_pum_sector']['id'] = 'field_pum_sector';
+  $handler->display->display_options['fields']['field_pum_sector']['table'] = 'field_data_field_pum_sector';
+  $handler->display->display_options['fields']['field_pum_sector']['field'] = 'field_pum_sector';
+  $handler->display->display_options['fields']['field_pum_sector']['delta_offset'] = '0';
+  /* Field: Field: General Community */
+  $handler->display->display_options['fields']['field_pum_generic']['id'] = 'field_pum_generic';
+  $handler->display->display_options['fields']['field_pum_generic']['table'] = 'field_data_field_pum_generic';
+  $handler->display->display_options['fields']['field_pum_generic']['field'] = 'field_pum_generic';
+  $handler->display->display_options['fields']['field_pum_generic']['delta_offset'] = '0';
+  /* Field: Field: Private topic */
+  $handler->display->display_options['fields']['field_pum_private']['id'] = 'field_pum_private';
+  $handler->display->display_options['fields']['field_pum_private']['table'] = 'field_data_field_pum_private';
+  $handler->display->display_options['fields']['field_pum_private']['field'] = 'field_pum_private';
+  $handler->display->display_options['fields']['field_pum_private']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_pum_private']['delta_offset'] = '0';
+  /* Sort criterion: User: Created date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'users';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: User: Uid */
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'users';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'portal/my-communities';
+  $translatables['portal_my_communities'] = array(
+    t('Master'),
+    t('Portal My Communities'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Name'),
+    t('Country'),
+    t('Sector'),
+    t('General Community'),
+    t('Private topic'),
+    t('All'),
+    t('Page'),
+  );
+  $export['portal_my_communities'] = $view;
 
   $view = new view();
   $view->name = 'portal_my_interest';
@@ -5720,6 +5941,123 @@ View members of <?php print $tname; ?>
   $export['private_communities'] = $view;
 
   $view = new view();
+  $view->name = 'pum_portal_blog_subscribe';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'pum_portal_blog_subscribe';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'pum_portal_blog_subscribe';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: Flags: subscribe_to_this_user_blog */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'users';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['relationship'] = 'uid';
+  $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'subscribe_to_this_user_blog';
+  /* Field: CiviCRM Contacts: Image Url */
+  $handler->display->display_options['fields']['image_URL']['id'] = 'image_URL';
+  $handler->display->display_options['fields']['image_URL']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['image_URL']['field'] = 'image_URL';
+  $handler->display->display_options['fields']['image_URL']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['image_URL']['label'] = '';
+  $handler->display->display_options['fields']['image_URL']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['image_URL']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+  if ($row->image_URL) {
+    print theme(\'imagecache_external\', array(\'path\' => $row->image_URL, \'style_name\'=> \'portal_directory\'));
+  }
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: CiviCRM Contacts: Display Name */
+  $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['display_name']['label'] = 'Author';
+  $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
+  /* Field: Flags: Flag link */
+  $handler->display->display_options['fields']['ops']['id'] = 'ops';
+  $handler->display->display_options['fields']['ops']['table'] = 'flagging';
+  $handler->display->display_options['fields']['ops']['field'] = 'ops';
+  $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
+  $handler->display->display_options['fields']['ops']['label'] = '';
+  $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'pum_portal_blog' => 'pum_portal_blog',
+  );
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['pum_portal_blog_subscribe'] = array(
+    t('Master'),
+    t('pum_portal_blog_subscribe'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('author'),
+    t('flag'),
+    t('Author'),
+    t('All'),
+    t('Block'),
+  );
+  $export['pum_portal_blog_subscribe'] = $view;
+
+  $view = new view();
   $view->name = 'pum_portal_directory';
   $view->description = '';
   $view->tag = 'default';
@@ -5737,11 +6075,10 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '30';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   /* Relationship: CiviCRM Contacts: Drupal ID */
   $handler->display->display_options['relationships']['drupal_id']['id'] = 'drupal_id';
@@ -5792,6 +6129,14 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['field_pum_user_sector']['relationship'] = 'drupal_id';
   $handler->display->display_options['fields']['field_pum_user_sector']['label'] = 'Sector';
   $handler->display->display_options['fields']['field_pum_user_sector']['type'] = 'taxonomy_term_reference_plain';
+  /* Contextual filter: CiviCRM Contacts: Contact ID */
+  $handler->display->display_options['arguments']['id']['id'] = 'id';
+  $handler->display->display_options['arguments']['id']['table'] = 'civicrm_contact';
+  $handler->display->display_options['arguments']['id']['field'] = 'id';
+  $handler->display->display_options['arguments']['id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['id']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: CiviCRM Contacts: Display Name */
   $handler->display->display_options['filters']['display_name']['id'] = 'display_name';
   $handler->display->display_options['filters']['display_name']['table'] = 'civicrm_contact';
@@ -5844,7 +6189,201 @@ View members of <?php print $tname; ?>
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: View area */
+  $handler->display->display_options['header']['view']['id'] = 'view';
+  $handler->display->display_options['header']['view']['table'] = 'views';
+  $handler->display->display_options['header']['view']['field'] = 'view';
+  $handler->display->display_options['header']['view']['view_to_insert'] = 'pum_portal_directory:block_1';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: CiviCRM Contacts: Image Url */
+  $handler->display->display_options['fields']['image_URL']['id'] = 'image_URL';
+  $handler->display->display_options['fields']['image_URL']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['image_URL']['field'] = 'image_URL';
+  $handler->display->display_options['fields']['image_URL']['label'] = '';
+  $handler->display->display_options['fields']['image_URL']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['image_URL']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+  if ($row->image_URL) {
+    print theme(\'imagecache_external\', array(\'path\' => $row->image_URL, \'style_name\'=> \'portal_directory\'));
+  }
+  else {
+    print \'<img src="http://placehold.it/220x200" />\';
+  }
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: CiviCRM Contacts: Contact ID */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['fields']['id']['exclude'] = TRUE;
+  /* Field: CiviCRM Contacts: Display Name */
+  $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['label'] = 'Full Name';
+  $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
+  /* Field: User: Roles */
+  $handler->display->display_options['fields']['rid']['id'] = 'rid';
+  $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['fields']['rid']['field'] = 'rid';
+  $handler->display->display_options['fields']['rid']['relationship'] = 'drupal_id';
+  $handler->display->display_options['fields']['rid']['exclude'] = TRUE;
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['relationship'] = 'drupal_id';
+  /* Field: User: User Sector */
+  $handler->display->display_options['fields']['field_pum_user_sector']['id'] = 'field_pum_user_sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['table'] = 'field_data_field_pum_user_sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['field'] = 'field_pum_user_sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['relationship'] = 'drupal_id';
+  $handler->display->display_options['fields']['field_pum_user_sector']['label'] = 'Sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: CiviCRM Phone Details: Phone Number */
+  $handler->display->display_options['fields']['phone']['id'] = 'phone';
+  $handler->display->display_options['fields']['phone']['table'] = 'civicrm_phone';
+  $handler->display->display_options['fields']['phone']['field'] = 'phone';
+  $handler->display->display_options['fields']['phone']['label'] = 'Phone';
+  $handler->display->display_options['fields']['phone']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['phone']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['phone']['location_type'] = '0';
+  $handler->display->display_options['fields']['phone']['location_op'] = '0';
+  $handler->display->display_options['fields']['phone']['is_primary'] = 1;
+  $handler->display->display_options['fields']['phone']['phone_type'] = '0';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['fields']['php_1']['table'] = 'views';
+  $handler->display->display_options['fields']['php_1']['field'] = 'php';
+  $handler->display->display_options['fields']['php_1']['label'] = 'Phone';
+  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php 
+   $tel = false;
+   $uid = $data->users_civicrm_uf_match_uid; 
+   try {
+     $roles = $data->_field_data["users_civicrm_uf_match_uid"]["entity"]->roles;
+   }
+   catch (Exception $e) {} 
+   if (is_array($roles)) {
+        foreach($roles as $rid => $role){
+            if (stripos($role, "admin") !== false) { $tel = true;  break; }
+        }
+   }
+   if ($tel) print $row->phone;
+   print "";
+?>';
+  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
   $handler->display->display_options['path'] = 'portal/directory';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_options']['columns'] = '5';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: CiviCRM Contacts: Image Url */
+  $handler->display->display_options['fields']['image_URL']['id'] = 'image_URL';
+  $handler->display->display_options['fields']['image_URL']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['image_URL']['field'] = 'image_URL';
+  $handler->display->display_options['fields']['image_URL']['label'] = '';
+  $handler->display->display_options['fields']['image_URL']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['image_URL']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+  if ($row->image_URL) {
+    print theme(\'imagecache_external\', array(\'path\' => $row->image_URL, \'style_name\'=> \'portal_directory_header\'));
+  }
+  else {
+    print \'<img src="http://placehold.it/150x150" />\';
+  }
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: CiviCRM Contacts: Contact ID */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['fields']['id']['exclude'] = TRUE;
+  /* Field: CiviCRM Contacts: Display Name */
+  $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
+  $handler->display->display_options['fields']['display_name']['label'] = 'Full Name';
+  $handler->display->display_options['fields']['display_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['relationship'] = 'drupal_id';
+  $handler->display->display_options['fields']['mail']['exclude'] = TRUE;
+  /* Field: User: User Sector */
+  $handler->display->display_options['fields']['field_pum_user_sector']['id'] = 'field_pum_user_sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['table'] = 'field_data_field_pum_user_sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['field'] = 'field_pum_user_sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['relationship'] = 'drupal_id';
+  $handler->display->display_options['fields']['field_pum_user_sector']['label'] = 'Sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_pum_user_sector']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Global: Random */
+  $handler->display->display_options['sorts']['random']['id'] = 'random';
+  $handler->display->display_options['sorts']['random']['table'] = 'views';
+  $handler->display->display_options['sorts']['random']['field'] = 'random';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: CiviCRM Contacts: Display Name */
+  $handler->display->display_options['filters']['display_name']['id'] = 'display_name';
+  $handler->display->display_options['filters']['display_name']['table'] = 'civicrm_contact';
+  $handler->display->display_options['filters']['display_name']['field'] = 'display_name';
+  $handler->display->display_options['filters']['display_name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['display_name']['group'] = 1;
+  $handler->display->display_options['filters']['display_name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['display_name']['expose']['operator_id'] = 'display_name_op';
+  $handler->display->display_options['filters']['display_name']['expose']['label'] = 'Full Name Contains';
+  $handler->display->display_options['filters']['display_name']['expose']['operator'] = 'display_name_op';
+  $handler->display->display_options['filters']['display_name']['expose']['identifier'] = 'display_name';
+  $handler->display->display_options['filters']['display_name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  /* Filter criterion: CiviCRM Contacts: Image Url */
+  $handler->display->display_options['filters']['image_URL']['id'] = 'image_URL';
+  $handler->display->display_options['filters']['image_URL']['table'] = 'civicrm_contact';
+  $handler->display->display_options['filters']['image_URL']['field'] = 'image_URL';
+  $handler->display->display_options['filters']['image_URL']['operator'] = 'not empty';
   $translatables['pum_portal_directory'] = array(
     t('Master'),
     t('Pum Portal Directory'),
@@ -5868,8 +6407,12 @@ View members of <?php print $tname; ?>
     t('Full Name'),
     t('E-mail'),
     t('Sector'),
+    t('All'),
     t('Full Name Contains'),
     t('Page'),
+    t('Roles'),
+    t('Phone'),
+    t('Block'),
   );
   $export['pum_portal_directory'] = $view;
 
