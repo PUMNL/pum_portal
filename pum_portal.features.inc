@@ -71,11 +71,11 @@ function pum_portal_flag_default_flags() {
     'access_author' => '',
     'show_contextual_link' => 0,
     'i18n' => 0,
-    'api_version' => 3,
     'module' => 'pum_portal',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   // Exported flag: "subscribe to this forum topic".
   $flags['subscribe_to_this_forum_topic'] = array(
@@ -108,11 +108,11 @@ function pum_portal_flag_default_flags() {
     'access_author' => '',
     'show_contextual_link' => 0,
     'i18n' => 0,
-    'api_version' => 3,
     'module' => 'pum_portal',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   // Exported flag: "Subscribe to this user blog".
   $flags['subscribe_to_this_user_blog'] = array(
@@ -139,11 +139,11 @@ function pum_portal_flag_default_flags() {
     'show_contextual_link' => 0,
     'show_on_profile' => 0,
     'access_uid' => '',
-    'api_version' => 3,
     'module' => 'pum_portal',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   return $flags;
 

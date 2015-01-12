@@ -734,9 +734,8 @@ function pum_portal_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
-      'entity_translation_sync' => FALSE,
       'file_directory' => '',
-      'file_extensions' => 'txt pdf doc docx xls xlsx odt odc',
+      'file_extensions' => 'txt pdf doc docx xls xlsx odt odc ppt pptx',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),

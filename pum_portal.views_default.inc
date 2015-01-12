@@ -635,7 +635,7 @@ function pum_portal_views_default_views() {
     10 => 0,
   );
   $handler->display->display_options['filters']['tid_2']['vocabulary'] = 'tags';
-  $handler->display->display_options['path'] = 'portal/blogs';
+  $handler->display->display_options['path'] = 'portal/blog';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
@@ -1757,7 +1757,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     'tags' => 0,
     'type_partner' => 0,
   );
-  $handler->display->display_options['path'] = 'portal/latest-portal-news';
+  $handler->display->display_options['path'] = 'portal/news';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
@@ -6747,7 +6747,7 @@ View members of <?php print $tname; ?>
     'tags' => 0,
     'type_partner' => 0,
   );
-  $handler->display->display_options['path'] = 'portal/latest-forum-topics';
+  $handler->display->display_options['path'] = 'portal/forum';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
