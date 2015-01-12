@@ -1,13 +1,12 @@
 name = Pum Portal
 core = 7.x
 package = Features
-version = 7.x-1.0-alpha6
+version = 7.x-1.0-alpha7
 project = pum_portal
 dependencies[] = abt
 dependencies[] = apachesolr
 dependencies[] = apachesolr_access
 dependencies[] = apachesolr_search
-dependencies[] = breadcrumbs_by_path
 dependencies[] = chosen
 dependencies[] = civicrm
 dependencies[] = ctools

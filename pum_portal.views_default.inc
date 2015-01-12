@@ -6000,7 +6000,8 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
   $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['display_name']['label'] = 'Author';
+  $handler->display->display_options['fields']['display_name']['label'] = '';
+  $handler->display->display_options['fields']['display_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
   /* Field: Flags: Flag link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
@@ -6051,7 +6052,6 @@ View members of <?php print $tname; ?>
     t('Desc'),
     t('author'),
     t('flag'),
-    t('Author'),
     t('All'),
     t('Block'),
   );
