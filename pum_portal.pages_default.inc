@@ -1756,7 +1756,7 @@ function pum_portal_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Communities';
   $display->uuid = '0a9567fc-4295-48b2-ad7f-acb2784e0a19';
   $display->content = array();
   $display->panels = array();
@@ -1789,7 +1789,7 @@ function pum_portal_default_page_manager_pages() {
     $pane->uuid = '1d3d6ed8-ddfe-4fbd-b640-526b5b851ee5';
     $display->content['new-1d3d6ed8-ddfe-4fbd-b640-526b5b851ee5'] = $pane;
     $display->panels['middle'][0] = 'new-1d3d6ed8-ddfe-4fbd-b640-526b5b851ee5';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
@@ -1859,7 +1859,7 @@ function pum_portal_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'General communities';
   $display->uuid = '95086d0c-4367-4cc5-813c-801db7d9ad2d';
   $display->content = array();
   $display->panels = array();
@@ -1883,7 +1883,7 @@ function pum_portal_default_page_manager_pages() {
       'args' => '',
       'url' => '',
       'display' => 'block_1',
-      'override_title' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
     );
     $pane->cache = array();

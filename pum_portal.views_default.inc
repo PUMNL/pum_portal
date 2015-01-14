@@ -1634,7 +1634,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Latest Portal News';
+  $handler->display->display_options['title'] = 'Latest News';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -2056,7 +2056,7 @@ if (user_access("create pum_portal_news content")) {
   $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
   $translatables['latest_portal_news'] = array(
     t('Master'),
-    t('Latest Portal News'),
+    t('Latest News'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -4200,7 +4200,7 @@ return implode("+",$tids);';
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Portal Countries';
+  $handler->display->display_options['title'] = 'Country communities';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -4239,7 +4239,7 @@ return implode("+",$tids);';
   $handler->display->display_options['path'] = 'portal/countries';
   $translatables['portal_countries'] = array(
     t('Master'),
-    t('Portal Countries'),
+    t('Country communities'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -5521,7 +5521,7 @@ return implode("+",$tids);';
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Portal Sectors';
+  $handler->display->display_options['title'] = 'Sector Communities';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -5556,7 +5556,7 @@ return implode("+",$tids);';
   $handler->display->display_options['path'] = 'portal/sectors';
   $translatables['portal_sections'] = array(
     t('Master'),
-    t('Portal Sectors'),
+    t('Sector Communities'),
     t('more'),
     t('Apply'),
     t('Reset'),
