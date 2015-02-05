@@ -50,6 +50,9 @@ function pum_portal_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_country_id',
+    'field_permissions' => array(
+      'type' => 1,
+    ),
     'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,

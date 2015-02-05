@@ -15,7 +15,7 @@ function pum_portal_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'civicrm_relationship';
-  $view->human_name = 'Country Experts';
+  $view->human_name = 'Portal Country Experts';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1273,7 +1273,7 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
  if (is_object($term)) $termname = $term->name; 
 
 if (user_access("create pum_portal_document content")) {
-print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/documents"))); 
+print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library"))); 
  }
 
 ?>';
@@ -1290,7 +1290,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
  if (is_object($term)) $termname = $term->name; 
 
 if (user_access("create pum_portal_document content")) {
-print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/documents"))); 
+print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library"))); 
  }
 
 ?>';
@@ -1343,7 +1343,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['path'] = 'portal/%/documents';
+  $handler->display->display_options['path'] = 'portal/%/library';
 
   /* Display: Term Block */
   $handler = $view->new_display('block', 'Term Block', 'block_1');
@@ -6186,6 +6186,15 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['vocabulary'] = 'sector';
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['error_message'] = FALSE;
+  /* Filter criterion: User: Roles */
+  $handler->display->display_options['filters']['rid']['id'] = 'rid';
+  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['filters']['rid']['field'] = 'rid';
+  $handler->display->display_options['filters']['rid']['relationship'] = 'drupal_id';
+  $handler->display->display_options['filters']['rid']['operator'] = 'not';
+  $handler->display->display_options['filters']['rid']['value'] = array(
+    4 => '4',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -6384,6 +6393,15 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['filters']['image_URL']['table'] = 'civicrm_contact';
   $handler->display->display_options['filters']['image_URL']['field'] = 'image_URL';
   $handler->display->display_options['filters']['image_URL']['operator'] = 'not empty';
+  /* Filter criterion: User: Roles */
+  $handler->display->display_options['filters']['rid']['id'] = 'rid';
+  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['filters']['rid']['field'] = 'rid';
+  $handler->display->display_options['filters']['rid']['relationship'] = 'drupal_id';
+  $handler->display->display_options['filters']['rid']['operator'] = 'not';
+  $handler->display->display_options['filters']['rid']['value'] = array(
+    4 => '4',
+  );
   $translatables['pum_portal_directory'] = array(
     t('Master'),
     t('Pum Portal Directory'),

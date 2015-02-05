@@ -150,6 +150,69 @@ function pum_portal_flag_default_flags() {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function pum_portal_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: portal_directory.
+  $styles['portal_directory'] = array(
+    'name' => 'portal_directory',
+    'label' => 'Portal Directory',
+    'effects' => array(
+      14 => array(
+        'label' => 'IEK - Smart Resizer',
+        'help' => 'Resize an image',
+        'effect callback' => 'iek_image_resize_effect',
+        'form callback' => 'iek_image_resize_form',
+        'summary theme' => 'iek_image_resize_summary',
+        'module' => 'iek',
+        'name' => 'iek_image_resize',
+        'data' => array(
+          'width' => 220,
+          'height' => 200,
+          'blank_margin' => 1,
+          'blank_margin_bg_color' => '#dddddd',
+          'position' => 'middle_center',
+          'x' => 0,
+          'y' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: portal_directory_header.
+  $styles['portal_directory_header'] = array(
+    'name' => 'portal_directory_header',
+    'label' => 'Portal Directory Header',
+    'effects' => array(
+      15 => array(
+        'label' => 'IEK - Smart Resizer',
+        'help' => 'Resize an image',
+        'effect callback' => 'iek_image_resize_effect',
+        'form callback' => 'iek_image_resize_form',
+        'summary theme' => 'iek_image_resize_summary',
+        'module' => 'iek',
+        'name' => 'iek_image_resize',
+        'data' => array(
+          'width' => 150,
+          'height' => 150,
+          'blank_margin' => 1,
+          'blank_margin_bg_color' => '#dddddd',
+          'position' => 'middle_center',
+          'x' => 0,
+          'y' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function pum_portal_node_info() {
