@@ -1336,8 +1336,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['arguments']['tid']['field'] = 'tid';
   $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['tid']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['tid']['title'] = '%1 Documents';
-  $handler->display->display_options['arguments']['tid']['breadcrumb_enable'] = TRUE;
+  $handler->display->display_options['arguments']['tid']['title'] = '%1 Library';
   $handler->display->display_options['arguments']['tid']['breadcrumb'] = '%1';
   $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
@@ -1611,7 +1610,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     t('more'),
     t('Block'),
     t('Term Page'),
-    t('%1 Documents'),
+    t('%1 Library'),
     t('%1'),
     t('Term Block'),
     t('Library'),
