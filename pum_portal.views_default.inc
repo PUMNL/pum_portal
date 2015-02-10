@@ -1100,7 +1100,7 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Pum Library';
+  $handler->display->display_options['title'] = 'Library';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'More';
@@ -1591,7 +1591,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['path'] = 'portal/library';
   $translatables['latest_portal_documents'] = array(
     t('Master'),
-    t('Pum Library'),
+    t('Library'),
     t('More'),
     t('Apply'),
     t('Reset'),
@@ -1613,7 +1613,6 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     t('%1 Library'),
     t('%1'),
     t('Term Block'),
-    t('Library'),
     t('Country'),
     t('Sector'),
     t('Document Type'),
