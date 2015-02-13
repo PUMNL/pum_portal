@@ -1083,116 +1083,6 @@ function pum_portal_default_page_manager_handlers() {
     $display->content['new-41e72a07-81a5-44ba-a9c2-68a21283ea69'] = $pane;
     $display->panels['center'][3] = 'new-41e72a07-81a5-44ba-a9c2-68a21283ea69';
     $pane = new stdClass();
-    $pane->pid = 'new-412f19e3-4e61-4054-906d-166557e59f60';
-    $pane->panel = 'right';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'perm',
-          'settings' => array(
-            'perm' => 'access user profiles',
-          ),
-          'context' => 'logged-in-user',
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'admin_title' => '',
-      'title' => '',
-      'body' => '<p><a href="/portal/view-community-members/%term:tid">View members</a></p>
-',
-      'format' => 'filtered_html',
-      'substitute' => 1,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = '412f19e3-4e61-4054-906d-166557e59f60';
-    $display->content['new-412f19e3-4e61-4054-906d-166557e59f60'] = $pane;
-    $display->panels['right'][0] = 'new-412f19e3-4e61-4054-906d-166557e59f60';
-    $pane = new stdClass();
-    $pane->pid = 'new-1a4577a7-e38e-4cab-b784-f78a936cc77e';
-    $pane->panel = 'right';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'perm',
-          'settings' => array(
-            'perm' => 'administer taxonomy',
-          ),
-          'context' => 'logged-in-user',
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'admin_title' => 'Add users',
-      'title' => '',
-      'body' => '<p><a href="/portal/add-private-taxonomy/%term:tid">Add users to %term:name</a></p>
-',
-      'format' => 'filtered_html',
-      'substitute' => 1,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $pane->uuid = '1a4577a7-e38e-4cab-b784-f78a936cc77e';
-    $display->content['new-1a4577a7-e38e-4cab-b784-f78a936cc77e'] = $pane;
-    $display->panels['right'][1] = 'new-1a4577a7-e38e-4cab-b784-f78a936cc77e';
-    $pane = new stdClass();
-    $pane->pid = 'new-5bf289b5-9554-472d-81e0-5f275c8764e0';
-    $pane->panel = 'right';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'perm',
-          'settings' => array(
-            'perm' => 'administer taxonomy',
-          ),
-          'context' => 'logged-in-user',
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'admin_title' => '',
-      'title' => '',
-      'body' => '<p><a href="/portal/delete-community-members/%term:tid">Delete users from Community</a></p>',
-      'format' => 'filtered_html',
-      'substitute' => 1,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $pane->uuid = '5bf289b5-9554-472d-81e0-5f275c8764e0';
-    $display->content['new-5bf289b5-9554-472d-81e0-5f275c8764e0'] = $pane;
-    $display->panels['right'][2] = 'new-5bf289b5-9554-472d-81e0-5f275c8764e0';
-    $pane = new stdClass();
     $pane->pid = 'new-77a59b84-3da4-4c4d-a311-adada0a3956d';
     $pane->panel = 'right';
     $pane->type = 'views';
@@ -1224,11 +1114,11 @@ function pum_portal_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
+    $pane->position = 0;
     $pane->locks = array();
     $pane->uuid = '77a59b84-3da4-4c4d-a311-adada0a3956d';
     $display->content['new-77a59b84-3da4-4c4d-a311-adada0a3956d'] = $pane;
-    $display->panels['right'][3] = 'new-77a59b84-3da4-4c4d-a311-adada0a3956d';
+    $display->panels['right'][0] = 'new-77a59b84-3da4-4c4d-a311-adada0a3956d';
     $pane = new stdClass();
     $pane->pid = 'new-65179ef5-13af-4c29-a11d-647b08c586a1';
     $pane->panel = 'right';
@@ -1261,11 +1151,11 @@ function pum_portal_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 4;
+    $pane->position = 1;
     $pane->locks = array();
     $pane->uuid = '65179ef5-13af-4c29-a11d-647b08c586a1';
     $display->content['new-65179ef5-13af-4c29-a11d-647b08c586a1'] = $pane;
-    $display->panels['right'][4] = 'new-65179ef5-13af-4c29-a11d-647b08c586a1';
+    $display->panels['right'][1] = 'new-65179ef5-13af-4c29-a11d-647b08c586a1';
     $pane = new stdClass();
     $pane->pid = 'new-886f81fe-65f9-46f4-a47f-ed50be2079a6';
     $pane->panel = 'top';
@@ -1290,6 +1180,125 @@ function pum_portal_default_page_manager_handlers() {
     $pane->uuid = '886f81fe-65f9-46f4-a47f-ed50be2079a6';
     $display->content['new-886f81fe-65f9-46f4-a47f-ed50be2079a6'] = $pane;
     $display->panels['top'][0] = 'new-886f81fe-65f9-46f4-a47f-ed50be2079a6';
+    $pane = new stdClass();
+    $pane->pid = 'new-412f19e3-4e61-4054-906d-166557e59f60';
+    $pane->panel = 'top';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'perm',
+          'settings' => array(
+            'perm' => 'access user profiles',
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '<p><a href="/portal/view-community-members/%term:tid">View members</a></p>
+',
+      'format' => 'filtered_html',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-no-margin add-button',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '412f19e3-4e61-4054-906d-166557e59f60';
+    $display->content['new-412f19e3-4e61-4054-906d-166557e59f60'] = $pane;
+    $display->panels['top'][1] = 'new-412f19e3-4e61-4054-906d-166557e59f60';
+    $pane = new stdClass();
+    $pane->pid = 'new-1a4577a7-e38e-4cab-b784-f78a936cc77e';
+    $pane->panel = 'top';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'perm',
+          'settings' => array(
+            'perm' => 'administer taxonomy',
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'admin_title' => 'Add users',
+      'title' => '',
+      'body' => '<p><a href="/portal/add-private-taxonomy/%term:tid">Add users to %term:name</a></p>
+',
+      'format' => 'filtered_html',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-no-margin add-button',
+    );
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $pane->uuid = '1a4577a7-e38e-4cab-b784-f78a936cc77e';
+    $display->content['new-1a4577a7-e38e-4cab-b784-f78a936cc77e'] = $pane;
+    $display->panels['top'][2] = 'new-1a4577a7-e38e-4cab-b784-f78a936cc77e';
+    $pane = new stdClass();
+    $pane->pid = 'new-5bf289b5-9554-472d-81e0-5f275c8764e0';
+    $pane->panel = 'top';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'perm',
+          'settings' => array(
+            'perm' => 'administer taxonomy',
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '<p><a href="/portal/delete-community-members/%term:tid">Delete users from Community</a></p>',
+      'format' => 'filtered_html',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-no-margin add-button',
+    );
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $pane->uuid = '5bf289b5-9554-472d-81e0-5f275c8764e0';
+    $display->content['new-5bf289b5-9554-472d-81e0-5f275c8764e0'] = $pane;
+    $display->panels['top'][3] = 'new-5bf289b5-9554-472d-81e0-5f275c8764e0';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-8e001eef-3a6e-4e65-91e3-2d818cc6e66e';
   $handler->conf['display'] = $display;
@@ -1631,7 +1640,7 @@ function pum_portal_default_page_manager_handlers() {
         0 => array(
           'name' => 'perm',
           'settings' => array(
-            'perm' => 'edit terms in 6',
+            'perm' => 'administer taxonomy',
           ),
           'context' => 'logged-in-user',
           'not' => FALSE,
