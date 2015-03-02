@@ -15,6 +15,14 @@ function pum_portal_default_rules_configuration() {
       "OWNER" : "rules",
       "REQUIRES" : [ "rules" ],
       "ON" : { "user_login" : [] },
+      "IF" : [
+        { "NOT text_matches" : {
+            "text" : [ "site:current-page:path" ],
+            "match" : "user\\/reset",
+            "operation" : "starts"
+          }
+        }
+      ],
       "DO" : [ { "redirect" : { "url" : "portal", "force" : 0 } } ]
     }
   }');
