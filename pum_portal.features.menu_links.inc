@@ -26,8 +26,6 @@ function pum_portal_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -46,
     'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
   );
   // Translatables
   // Included for use with string extractors like potx.

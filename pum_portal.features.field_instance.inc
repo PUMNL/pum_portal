@@ -734,6 +734,7 @@ function pum_portal_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'txt pdf doc docx xls xlsx odt odc ppt pptx',
       'max_filesize' => '',
@@ -1384,6 +1385,7 @@ function pum_portal_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'epsacrop' => array(
         'styles' => array(
           'epsa_banner' => 0,
@@ -1573,6 +1575,7 @@ function pum_portal_field_default_field_instances() {
     'label' => 'Country',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => 0,
     ),
     'widget' => array(
@@ -1607,6 +1610,7 @@ function pum_portal_field_default_field_instances() {
     'label' => 'General Community',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => 0,
     ),
     'widget' => array(
@@ -1674,6 +1678,7 @@ function pum_portal_field_default_field_instances() {
     'label' => 'Sector',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => 0,
     ),
     'widget' => array(
@@ -1708,6 +1713,7 @@ function pum_portal_field_default_field_instances() {
     'label' => 'User Sector',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => 0,
     ),
     'widget' => array(
