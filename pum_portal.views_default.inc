@@ -100,8 +100,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['relationship_type']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['relationship_type']['field'] = 'relationship_type';
   $handler->display->display_options['filters']['relationship_type']['value'] = array(
-    21 => '21',
-    30 => '30',
+    23 => '23',
   );
   /* Filter criterion: CiviCRM Relationships: Is Relationship Active */
   $handler->display->display_options['filters']['is_active']['id'] = 'is_active';
@@ -157,7 +156,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['relationship_type']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['relationship_type']['field'] = 'relationship_type';
   $handler->display->display_options['filters']['relationship_type']['value'] = array(
-    14 => '14',
+    16 => '16',
   );
   /* Filter criterion: CiviCRM Relationships: Is Relationship Active */
   $handler->display->display_options['filters']['is_active']['id'] = 'is_active';
@@ -205,8 +204,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['relationship_type']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['relationship_type']['field'] = 'relationship_type';
   $handler->display->display_options['filters']['relationship_type']['value'] = array(
-    19 => '19',
-    30 => '30',
+    20 => '20',
   );
   /* Filter criterion: CiviCRM Relationships: Is Relationship Active */
   $handler->display->display_options['filters']['is_active']['id'] = 'is_active';
@@ -3581,6 +3579,7 @@ return implode("+",$tids);';
   $handler->display->display_options['arguments']['tid_1']['default_argument_options']['code'] = 'global $user;
 $account = user_load($user->uid);
 $tids=array();
+$tids[]=0;
 foreach ($account as $fieldname => $fieldvalue){
    if (substr_compare($fieldname, "field_", 0)) {
         if (isset($fieldvalue["und"]) && is_array($fieldvalue["und"])){
