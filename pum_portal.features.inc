@@ -160,7 +160,7 @@ function pum_portal_image_default_styles() {
     'name' => 'portal_directory',
     'label' => 'Portal Directory',
     'effects' => array(
-      14 => array(
+      5 => array(
         'label' => 'IEK - Smart Resizer',
         'help' => 'Resize an image',
         'effect callback' => 'iek_image_resize_effect',
@@ -169,8 +169,8 @@ function pum_portal_image_default_styles() {
         'module' => 'iek',
         'name' => 'iek_image_resize',
         'data' => array(
-          'width' => 220,
-          'height' => 200,
+          'width' => 160,
+          'height' => 150,
           'blank_margin' => 1,
           'blank_margin_bg_color' => '#dddddd',
           'position' => 'middle_center',

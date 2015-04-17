@@ -106,6 +106,16 @@ function pum_portal_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'author' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'author',
+    ),
+    'post_date' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_long',
+    ),
   );
   $export['node|page|search_result'] = $ds_fieldsetting;
 
@@ -150,6 +160,16 @@ function pum_portal_ds_field_settings_info() {
         ),
       ),
     ),
+    'author' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'author',
+    ),
+    'post_date' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_long',
+    ),
   );
   $export['node|pum_portal_blog|search_result'] = $ds_fieldsetting;
 
@@ -171,10 +191,10 @@ function pum_portal_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'body' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
+    'author' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'author',
     ),
   );
   $export['node|pum_portal_document|search_result'] = $ds_fieldsetting;
@@ -343,7 +363,7 @@ function pum_portal_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'search_result';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '11',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -352,6 +372,16 @@ function pum_portal_ds_field_settings_info() {
         'class' => '',
         'ft' => array(),
       ),
+    ),
+    'author' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'author',
+    ),
+    'post_date' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_long',
     ),
   );
   $export['node|webform|search_result'] = $ds_fieldsetting;
@@ -468,12 +498,14 @@ function pum_portal_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
-        1 => 'body',
+        1 => 'post_date',
+        2 => 'author',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
-      'body' => 'ds_content',
+      'post_date' => 'ds_content',
+      'author' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -532,12 +564,14 @@ function pum_portal_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
-        1 => 'body',
+        1 => 'post_date',
+        2 => 'author',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
-      'body' => 'ds_content',
+      'post_date' => 'ds_content',
+      'author' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -562,20 +596,18 @@ function pum_portal_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
-        1 => 'body',
-        2 => 'field_document_file',
+        1 => 'author',
+        2 => 'body',
+        3 => 'field_document_file',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
+      'author' => 'ds_content',
       'body' => 'ds_content',
       'field_document_file' => 'ds_content',
     ),
-    'classes' => array(
-      'layout_class' => array(
-        '' => '',
-      ),
-    ),
+    'classes' => array(),
     'wrappers' => array(
       'ds_content' => 'div',
     ),
@@ -788,10 +820,14 @@ function pum_portal_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
+        1 => 'post_date',
+        2 => 'author',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
+      'post_date' => 'ds_content',
+      'author' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

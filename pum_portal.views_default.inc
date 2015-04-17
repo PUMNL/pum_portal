@@ -256,7 +256,7 @@ function pum_portal_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Portal Blog';
+  $handler->display->display_options['title'] = 'Latest Blogs';
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['link_display'] = 'page';
@@ -723,6 +723,17 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+if (user_access("create pum_portal_blog content")) {
+print l("+ Add Blog","node/add/pum-portal-blog");
+ }
+
+?>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: CiviCRM Contacts: Display Name */
   $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
@@ -1054,7 +1065,7 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
   $translatables['latest_portal_blogs'] = array(
     t('Master'),
-    t('Portal Blog'),
+    t('Latest Blogs'),
     t('More'),
     t('Apply'),
     t('Reset'),
@@ -1218,12 +1229,69 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_document_file' => 'field_document_file',
+    'title' => 'title',
+    'term_node_tid' => 'term_node_tid',
+    'sticky' => 'sticky',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_document_file' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'term_node_tid' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'sticky' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+if (user_access("create pum_portal_document content")) {
+print l("+ Add Document","node/add/pum-portal-document");
+ }
+
+?>
+';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: File */
   $handler->display->display_options['fields']['field_document_file']['id'] = 'field_document_file';
   $handler->display->display_options['fields']['field_document_file']['table'] = 'field_data_field_document_file';
   $handler->display->display_options['fields']['field_document_file']['field'] = 'field_document_file';
   $handler->display->display_options['fields']['field_document_file']['label'] = '';
+  $handler->display->display_options['fields']['field_document_file']['alter']['max_length'] = '30';
+  $handler->display->display_options['fields']['field_document_file']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['field_document_file']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['field_document_file']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['field_document_file']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_document_file']['click_sort_column'] = 'fid';
   /* Field: Content: Title */
@@ -1254,6 +1322,17 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
     'tags' => 0,
     'type_partner' => 0,
   );
+  /* Field: Content: Sticky */
+  $handler->display->display_options['fields']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['table'] = 'node';
+  $handler->display->display_options['fields']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['label'] = '';
+  $handler->display->display_options['fields']['sticky']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['sticky']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['sticky']['type'] = 'custom';
+  $handler->display->display_options['fields']['sticky']['type_custom_true'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['type_custom_false'] = 'not-sticky';
+  $handler->display->display_options['fields']['sticky']['not'] = 0;
 
   /* Display: Term Page */
   $handler = $view->new_display('page', 'Term Page', 'page_1');
@@ -1608,6 +1687,8 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     t('Page'),
     t('more'),
     t('Block'),
+    t('sticky'),
+    t('not-sticky'),
     t('Term Page'),
     t('%1 Library'),
     t('%1'),
@@ -1770,11 +1851,13 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
     'created' => 'title',
     'comment_count' => 'comment_count',
     'term_node_tid' => 'term_node_tid',
+    'sticky' => 'sticky',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -1804,10 +1887,31 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
       'separator' => '',
       'empty_column' => 0,
     ),
+    'sticky' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+
+if (user_access("create pum_portal_news content")) {
+ print l("+ Add News Topic","node/add/pum-portal-news");
+ }
+
+?>
+
+';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -1860,6 +1964,30 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     'tags' => 0,
     'type_partner' => 0,
   );
+  /* Field: Content: Sticky */
+  $handler->display->display_options['fields']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['table'] = 'node';
+  $handler->display->display_options['fields']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['label'] = '';
+  $handler->display->display_options['fields']['sticky']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['sticky']['element_type'] = '0';
+  $handler->display->display_options['fields']['sticky']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['sticky']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['sticky']['type'] = 'custom';
+  $handler->display->display_options['fields']['sticky']['type_custom_true'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['type_custom_false'] = 'not-sticky';
+  $handler->display->display_options['fields']['sticky']['not'] = 0;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Sticky */
+  $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['table'] = 'node';
+  $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
 
   /* Display: Term Page */
   $handler = $view->new_display('page', 'Term Page', 'page_1');
@@ -2075,6 +2203,8 @@ if (user_access("create pum_portal_news content")) {
     t('Block'),
     t('More'),
     t('[title] [comment_count]'),
+    t('sticky'),
+    t('not-sticky'),
     t('Term Page'),
     t('All'),
     t('%1 - Latest News'),
@@ -3579,7 +3709,7 @@ return implode("+",$tids);';
   $handler->display->display_options['arguments']['tid_1']['default_argument_options']['code'] = 'global $user;
 $account = user_load($user->uid);
 $tids=array();
-$tids[]=0;
+$tids[]=-1;
 foreach ($account as $fieldname => $fieldvalue){
    if (substr_compare($fieldname, "field_", 0)) {
         if (isset($fieldvalue["und"]) && is_array($fieldvalue["und"])){
@@ -3635,15 +3765,15 @@ return implode("+",$tids);';
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
-  $handler->display->display_options['header']['result']['label'] = 'Forum';
-  $handler->display->display_options['header']['result']['content'] = '<a href="/portal/my-latest-forum-topics">Forum  (@total)</a>';
+  $handler->display->display_options['header']['result']['label'] = 'Fora';
+  $handler->display->display_options['header']['result']['content'] = '<a href="/portal/forum">Fora  (@total)</a>';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area_text_custom']['content'] = '<a href="/portal/my-latest-forum-topics">Forum</a>';
+  $handler->display->display_options['empty']['area_text_custom']['content'] = '<a href="/portal/forum">Fora</a>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -3890,8 +4020,9 @@ return implode("+",$tids);';
     t('.'),
     t('All'),
     t('Block-forum'),
-    t('<a href="/portal/my-latest-forum-topics">Forum  (@total)</a>'),
-    t('<a href="/portal/my-latest-forum-topics">Forum</a>'),
+    t('Fora'),
+    t('<a href="/portal/forum">Fora  (@total)</a>'),
+    t('<a href="/portal/forum">Fora</a>'),
     t('Block-blogs'),
     t('<a href="/portal/my-blog">Blogs (@total)</a>'),
     t('<a href="/portal/my-blog">Blogs</a>'),
@@ -6067,7 +6198,7 @@ View members of <?php print $tname; ?>
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Pum Portal Directory';
+  $handler->display->display_options['title'] = 'Directory';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -6402,7 +6533,7 @@ View members of <?php print $tname; ?>
   );
   $translatables['pum_portal_directory'] = array(
     t('Master'),
-    t('Pum Portal Directory'),
+    t('Directory'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -6444,7 +6575,7 @@ View members of <?php print $tname; ?>
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Latest Forum Topics';
+  $handler->display->display_options['title'] = 'Latest Fora';
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['access']['type'] = 'role';
@@ -6839,6 +6970,17 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php 
+if (user_access("create pum_forum_item content")) {
+ print l("+ Add Forum Topic","node/add/pum-forum-item"); 
+}
+?>
+';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: CiviCRM Contacts: Display Name */
   $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
@@ -7164,7 +7306,7 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['path'] = 'portal/%/forum';
   $translatables['pum_portal_latest_forum_topics'] = array(
     t('Master'),
-    t('Latest Forum Topics'),
+    t('Latest Fora'),
     t('More'),
     t('Apply'),
     t('Reset'),
