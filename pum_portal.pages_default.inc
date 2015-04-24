@@ -40,6 +40,16 @@ function pum_portal_default_page_manager_handlers() {
           'context' => 'argument_term_1',
           'not' => FALSE,
         ),
+        1 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 2,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
       ),
       'logic' => 'and',
     ),
@@ -502,6 +512,16 @@ function pum_portal_default_page_manager_handlers() {
           'context' => 'argument_term_1',
           'not' => FALSE,
         ),
+        1 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 2,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
       ),
       'logic' => 'and',
     ),
@@ -660,43 +680,6 @@ function pum_portal_default_page_manager_handlers() {
     $display->content['new-8008d3d9-b438-4602-878d-0165c1b32adc'] = $pane;
     $display->panels['center'][1] = 'new-8008d3d9-b438-4602-878d-0165c1b32adc';
     $pane = new stdClass();
-    $pane->pid = 'new-62c63dcd-b533-47f8-900b-01ad44c05e88';
-    $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'sector_coordinator';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '5',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block',
-      'context' => array(
-        0 => 'argument_term_1.field_pum_coordinator_id',
-      ),
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $pane->uuid = '62c63dcd-b533-47f8-900b-01ad44c05e88';
-    $display->content['new-62c63dcd-b533-47f8-900b-01ad44c05e88'] = $pane;
-    $display->panels['center'][2] = 'new-62c63dcd-b533-47f8-900b-01ad44c05e88';
-    $pane = new stdClass();
     $pane->pid = 'new-77a59b84-3da4-4c4d-a311-adada0a3956d';
     $pane->panel = 'right';
     $pane->type = 'views';
@@ -793,6 +776,43 @@ function pum_portal_default_page_manager_handlers() {
     $display->content['new-fff9f0f4-4c6e-4215-bc18-a8841d6f3c6c'] = $pane;
     $display->panels['right'][2] = 'new-fff9f0f4-4c6e-4215-bc18-a8841d6f3c6c';
     $pane = new stdClass();
+    $pane->pid = 'new-62c63dcd-b533-47f8-900b-01ad44c05e88';
+    $pane->panel = 'top';
+    $pane->type = 'views';
+    $pane->subtype = 'sector_coordinator';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '5',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block',
+      'context' => array(
+        0 => 'argument_term_1.field_pum_coordinator_id',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '62c63dcd-b533-47f8-900b-01ad44c05e88';
+    $display->content['new-62c63dcd-b533-47f8-900b-01ad44c05e88'] = $pane;
+    $display->panels['top'][0] = 'new-62c63dcd-b533-47f8-900b-01ad44c05e88';
+    $pane = new stdClass();
     $pane->pid = 'new-886f81fe-65f9-46f4-a47f-ed50be2079a6';
     $pane->panel = 'top';
     $pane->type = 'entity_field_extra';
@@ -811,11 +831,11 @@ function pum_portal_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $pane->uuid = '886f81fe-65f9-46f4-a47f-ed50be2079a6';
     $display->content['new-886f81fe-65f9-46f4-a47f-ed50be2079a6'] = $pane;
-    $display->panels['top'][0] = 'new-886f81fe-65f9-46f4-a47f-ed50be2079a6';
+    $display->panels['top'][1] = 'new-886f81fe-65f9-46f4-a47f-ed50be2079a6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-8e001eef-3a6e-4e65-91e3-2d818cc6e66e';
   $handler->conf['display'] = $display;
@@ -849,6 +869,16 @@ function pum_portal_default_page_manager_handlers() {
             ),
           ),
           'context' => 'argument_term_1',
+          'not' => FALSE,
+        ),
+        1 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 2,
+            ),
+          ),
+          'context' => 'logged-in-user',
           'not' => FALSE,
         ),
       ),
@@ -1334,6 +1364,16 @@ function pum_portal_default_page_manager_handlers() {
           'context' => 'argument_term_1',
           'not' => FALSE,
         ),
+        1 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 2,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
       ),
       'logic' => 'and',
     ),
@@ -1754,6 +1794,21 @@ function pum_portal_default_page_manager_pages() {
     'css' => '',
     'contexts' => array(),
     'relationships' => array(),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 2,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
   );
   $display = new panels_display();
   $display->layout = 'onecol';
@@ -1857,6 +1912,21 @@ function pum_portal_default_page_manager_pages() {
     'css' => '',
     'contexts' => array(),
     'relationships' => array(),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 2,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
   );
   $display = new panels_display();
   $display->layout = 'onecol';
