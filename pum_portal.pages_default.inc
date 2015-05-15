@@ -2059,11 +2059,91 @@ function pum_portal_default_page_manager_pages() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
+  $handler->name = 'page_portal_panel_context_2';
+  $handler->task = 'page';
+  $handler->subtask = 'portal';
+  $handler->handler = 'panel_context';
+  $handler->weight = -30;
+  $handler->conf = array(
+    'title' => 'CustomerPortal',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 4,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'flexible';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'center' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'Portal';
+  $display->uuid = '7cd562be-977f-48f8-80fa-1a61310c25e2';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-6c752e1e-fa84-44e1-9e61-a5f4084360e5';
+    $pane->panel = 'center';
+    $pane->type = 'node';
+    $pane->subtype = 'node';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'nid' => '380',
+      'links' => 0,
+      'leave_node_title' => 0,
+      'identifier' => '',
+      'build_mode' => 'full',
+      'link_node_title' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '6c752e1e-fa84-44e1-9e61-a5f4084360e5';
+    $display->content['new-6c752e1e-fa84-44e1-9e61-a5f4084360e5'] = $pane;
+    $display->panels['center'][0] = 'new-6c752e1e-fa84-44e1-9e61-a5f4084360e5';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-6c752e1e-fa84-44e1-9e61-a5f4084360e5';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
   $handler->name = 'page_portal_panel_context';
   $handler->task = 'page';
   $handler->subtask = 'portal';
   $handler->handler = 'panel_context';
-  $handler->weight = 0;
+  $handler->weight = -29;
   $handler->conf = array(
     'title' => 'Panel',
     'no_blocks' => 0,
@@ -2137,40 +2217,6 @@ function pum_portal_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-c10982b7-8373-4e59-96c1-134be7a20cc7';
-    $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'latest_portal_documents';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '5',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = 'c10982b7-8373-4e59-96c1-134be7a20cc7';
-    $display->content['new-c10982b7-8373-4e59-96c1-134be7a20cc7'] = $pane;
-    $display->panels['center'][0] = 'new-c10982b7-8373-4e59-96c1-134be7a20cc7';
-    $pane = new stdClass();
     $pane->pid = 'new-09bcd219-e5f2-41da-ad13-7f8786e5dbe4';
     $pane->panel = 'center';
     $pane->type = 'views';
@@ -2199,11 +2245,45 @@ function pum_portal_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 0;
     $pane->locks = array();
     $pane->uuid = '09bcd219-e5f2-41da-ad13-7f8786e5dbe4';
     $display->content['new-09bcd219-e5f2-41da-ad13-7f8786e5dbe4'] = $pane;
-    $display->panels['center'][1] = 'new-09bcd219-e5f2-41da-ad13-7f8786e5dbe4';
+    $display->panels['center'][0] = 'new-09bcd219-e5f2-41da-ad13-7f8786e5dbe4';
+    $pane = new stdClass();
+    $pane->pid = 'new-c10982b7-8373-4e59-96c1-134be7a20cc7';
+    $pane->panel = 'center';
+    $pane->type = 'views';
+    $pane->subtype = 'latest_portal_documents';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '5',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = 'c10982b7-8373-4e59-96c1-134be7a20cc7';
+    $display->content['new-c10982b7-8373-4e59-96c1-134be7a20cc7'] = $pane;
+    $display->panels['center'][1] = 'new-c10982b7-8373-4e59-96c1-134be7a20cc7';
     $pane = new stdClass();
     $pane->pid = 'new-a8e0cce8-d449-4197-8974-6f72cb4ea89f';
     $pane->panel = 'center';
@@ -2430,6 +2510,28 @@ function pum_portal_default_page_manager_pages() {
     $pane->uuid = '25fd97b4-ff94-4e21-9b08-0798be9f52b9';
     $display->content['new-25fd97b4-ff94-4e21-9b08-0798be9f52b9'] = $pane;
     $display->panels['left'][2] = 'new-25fd97b4-ff94-4e21-9b08-0798be9f52b9';
+    $pane = new stdClass();
+    $pane->pid = 'new-c8ff960e-927a-4433-8252-895045738a44';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'poll-recent';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $pane->uuid = 'c8ff960e-927a-4433-8252-895045738a44';
+    $display->content['new-c8ff960e-927a-4433-8252-895045738a44'] = $pane;
+    $display->panels['left'][3] = 'new-c8ff960e-927a-4433-8252-895045738a44';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = 'new-a8e0cce8-d449-4197-8974-6f72cb4ea89f';
   $handler->conf['display'] = $display;

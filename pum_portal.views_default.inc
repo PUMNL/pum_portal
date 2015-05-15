@@ -27,6 +27,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -528,6 +529,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
   $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
   $handler->display->display_options['fields']['term_node_tid']['label'] = '';
+  $handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['term_node_tid']['element_type'] = 'em';
   $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
@@ -539,6 +541,7 @@ function pum_portal_views_default_views() {
     'private_group' => 'private_group',
     'sector' => 'sector',
     'faq_category' => 0,
+    'manual' => 0,
     'portal_type' => 0,
     'tags' => 0,
     'type_partner' => 0,
@@ -1391,6 +1394,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
   $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
   $handler->display->display_options['fields']['term_node_tid']['label'] = '';
+  $handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['term_node_tid']['element_type'] = 'em';
   $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
@@ -1402,6 +1406,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     'private_group' => 'private_group',
     'sector' => 'sector',
     'faq_category' => 0,
+    'manual' => 0,
     'portal_type' => 0,
     'tags' => 0,
     'type_partner' => 0,
@@ -1537,6 +1542,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
   $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
   $handler->display->display_options['fields']['term_node_tid']['label'] = '';
+  $handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['term_node_tid']['element_type'] = 'em';
   $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
@@ -1548,6 +1554,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     'private_group' => 'private_group',
     'sector' => 'sector',
     'faq_category' => 0,
+    'manual' => 0,
     'portal_type' => 0,
     'tags' => 0,
     'type_partner' => 0,
@@ -1800,8 +1807,8 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '150';
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
@@ -1820,6 +1827,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
   $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
   $handler->display->display_options['fields']['term_node_tid']['label'] = '';
+  $handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['term_node_tid']['element_type'] = 'em';
   $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
@@ -1831,6 +1839,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     'private_group' => 'private_group',
     'sector' => 'sector',
     'faq_category' => 0,
+    'manual' => 0,
     'portal_type' => 0,
     'tags' => 0,
     'type_partner' => 0,
@@ -1919,8 +1928,8 @@ if (user_access("create pum_portal_news content")) {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['text'] = '[title] [comment_count]';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '95';
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
@@ -6888,6 +6897,7 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
   $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
   $handler->display->display_options['fields']['term_node_tid']['label'] = '';
+  $handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['term_node_tid']['element_type'] = 'em';
   $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
@@ -6899,6 +6909,7 @@ View members of <?php print $tname; ?>
     'private_group' => 'private_group',
     'sector' => 'sector',
     'faq_category' => 0,
+    'manual' => 0,
     'portal_type' => 0,
     'tags' => 0,
     'type_partner' => 0,
