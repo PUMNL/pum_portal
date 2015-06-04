@@ -140,7 +140,6 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['relationship'] = 'contact_id_b_';
   $handler->display->display_options['fields']['display_name']['label'] = 'Coordinator';
-  $handler->display->display_options['fields']['display_name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['display_name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['display_name']['alter']['path'] = 'portal/directory/[id]';
   $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
@@ -389,6 +388,8 @@ function pum_portal_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Blog';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -421,7 +422,7 @@ function pum_portal_views_default_views() {
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
-      'separator' => ' - ',
+      'separator' => '',
       'empty_column' => 0,
     ),
     'created' => array(
@@ -499,7 +500,6 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['fields']['field_blog_image']['table'] = 'field_data_field_blog_image';
   $handler->display->display_options['fields']['field_blog_image']['field'] = 'field_blog_image';
   $handler->display->display_options['fields']['field_blog_image']['label'] = '';
-  $handler->display->display_options['fields']['field_blog_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_blog_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_blog_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_blog_image']['settings'] = array(
@@ -1086,6 +1086,7 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
     t('Drupal User'),
     t('Read more..'),
     t('Page'),
+    t('Blog'),
     t('more'),
     t('Country'),
     t('Sector'),
@@ -1791,17 +1792,62 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'News';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'all-topics';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'created' => 'title',
+    'title' => 'title',
+    'comment_count' => 'comment_count',
+    'term_node_tid' => 'term_node_tid',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'created' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'comment_count' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'term_node_tid' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'medium';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Content: Thumbnail */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
+    'image_style' => 'medium',
+    'image_link' => '',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1810,6 +1856,14 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '150';
   $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'medium';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
@@ -2209,6 +2263,7 @@ if (user_access("create pum_portal_news content")) {
     t('Comments'),
     t('.'),
     t('Page'),
+    t('News'),
     t('Block'),
     t('More'),
     t('[title] [comment_count]'),
@@ -6768,6 +6823,8 @@ View members of <?php print $tname; ?>
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Forum';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -6775,8 +6832,8 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['style_options']['columns'] = array(
     'image_URL' => 'image_URL',
     'php' => 'php',
-    'display_name' => 'created',
-    'created' => 'created',
+    'display_name' => 'title',
+    'created' => 'title',
     'title' => 'title',
     'comment_count' => 'comment_count',
     'term_node_tid' => 'term_node_tid',
@@ -6853,6 +6910,14 @@ View members of <?php print $tname; ?>
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: CiviCRM Contacts: Display Name */
   $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
@@ -6868,18 +6933,10 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = '';
   $handler->display->display_options['fields']['created']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['created']['alter']['text'] = '[display_name]<br />
-[created] ';
+  $handler->display->display_options['fields']['created']['alter']['text'] = '[display_name] | [created] ';
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
@@ -6952,7 +7009,7 @@ View members of <?php print $tname; ?>
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
-      'separator' => ' - ',
+      'separator' => '',
       'empty_column' => 0,
     ),
     'created' => array(
@@ -7344,9 +7401,9 @@ if (user_access("create pum_forum_item content")) {
     t('Drupal User'),
     t('.'),
     t('Page'),
+    t('Forum'),
     t('more'),
-    t('[display_name]<br />
-[created] '),
+    t('[display_name] | [created] '),
     t('Block'),
     t('[php]<br />[created]<br />[display_name]'),
     t('[title] [comment_count]'),

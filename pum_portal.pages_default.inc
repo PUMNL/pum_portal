@@ -387,7 +387,7 @@ function pum_portal_default_page_manager_handlers() {
       'url' => '',
       'display' => 'block_1',
       'context' => array(
-        0 => 'argument_term_1.field_country_id',
+        0 => 'argument_term_1.field-country-id',
       ),
       'override_title' => 1,
       'override_title_text' => '',
@@ -2191,7 +2191,7 @@ function pum_portal_default_page_manager_pages() {
         'width' => '49.92608354190305',
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => '',
+        'class' => 'large-6 small-12 medium-12',
       ),
       'left' => array(
         'type' => 'region',
@@ -2199,7 +2199,7 @@ function pum_portal_default_page_manager_pages() {
         'width' => '50.07391645809725',
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => '',
+        'class' => 'large-6 medium-12 small-12',
       ),
     ),
   );
@@ -2284,142 +2284,6 @@ function pum_portal_default_page_manager_pages() {
     $pane->uuid = 'c10982b7-8373-4e59-96c1-134be7a20cc7';
     $display->content['new-c10982b7-8373-4e59-96c1-134be7a20cc7'] = $pane;
     $display->panels['center'][1] = 'new-c10982b7-8373-4e59-96c1-134be7a20cc7';
-    $pane = new stdClass();
-    $pane->pid = 'new-a8e0cce8-d449-4197-8974-6f72cb4ea89f';
-    $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'my_latest_forum_topics_test';
-    $pane->shown = FALSE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '10',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $pane->uuid = 'a8e0cce8-d449-4197-8974-6f72cb4ea89f';
-    $display->content['new-a8e0cce8-d449-4197-8974-6f72cb4ea89f'] = $pane;
-    $display->panels['center'][2] = 'new-a8e0cce8-d449-4197-8974-6f72cb4ea89f';
-    $pane = new stdClass();
-    $pane->pid = 'new-edf24778-d09f-42ae-a7c7-00fee17955c8';
-    $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'portal_my_latest_news';
-    $pane->shown = FALSE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '10',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $pane->locks = array();
-    $pane->uuid = 'edf24778-d09f-42ae-a7c7-00fee17955c8';
-    $display->content['new-edf24778-d09f-42ae-a7c7-00fee17955c8'] = $pane;
-    $display->panels['center'][3] = 'new-edf24778-d09f-42ae-a7c7-00fee17955c8';
-    $pane = new stdClass();
-    $pane->pid = 'new-40b77585-434f-4033-a0bb-853fb0c1719b';
-    $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'my_blog';
-    $pane->shown = FALSE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '10',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 4;
-    $pane->locks = array();
-    $pane->uuid = '40b77585-434f-4033-a0bb-853fb0c1719b';
-    $display->content['new-40b77585-434f-4033-a0bb-853fb0c1719b'] = $pane;
-    $display->panels['center'][4] = 'new-40b77585-434f-4033-a0bb-853fb0c1719b';
-    $pane = new stdClass();
-    $pane->pid = 'new-5a53d3b2-8f58-4d9d-9e9e-b0c09b147d4a';
-    $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'my_documents';
-    $pane->shown = FALSE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '10',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 5;
-    $pane->locks = array();
-    $pane->uuid = '5a53d3b2-8f58-4d9d-9e9e-b0c09b147d4a';
-    $display->content['new-5a53d3b2-8f58-4d9d-9e9e-b0c09b147d4a'] = $pane;
-    $display->panels['center'][5] = 'new-5a53d3b2-8f58-4d9d-9e9e-b0c09b147d4a';
     $pane = new stdClass();
     $pane->pid = 'new-57c5c8e4-fbd0-4149-beb5-29f42ee6a16a';
     $pane->panel = 'left';
@@ -2510,30 +2374,8 @@ function pum_portal_default_page_manager_pages() {
     $pane->uuid = '25fd97b4-ff94-4e21-9b08-0798be9f52b9';
     $display->content['new-25fd97b4-ff94-4e21-9b08-0798be9f52b9'] = $pane;
     $display->panels['left'][2] = 'new-25fd97b4-ff94-4e21-9b08-0798be9f52b9';
-    $pane = new stdClass();
-    $pane->pid = 'new-c8ff960e-927a-4433-8252-895045738a44';
-    $pane->panel = 'left';
-    $pane->type = 'block';
-    $pane->subtype = 'poll-recent';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $pane->locks = array();
-    $pane->uuid = 'c8ff960e-927a-4433-8252-895045738a44';
-    $display->content['new-c8ff960e-927a-4433-8252-895045738a44'] = $pane;
-    $display->panels['left'][3] = 'new-c8ff960e-927a-4433-8252-895045738a44';
   $display->hide_title = PANELS_TITLE_NONE;
-  $display->title_pane = 'new-a8e0cce8-d449-4197-8974-6f72cb4ea89f';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['portal'] = $page;

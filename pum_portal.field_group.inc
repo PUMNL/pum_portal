@@ -130,7 +130,7 @@ function pum_portal_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tags group',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_pum_country',
       1 => 'field_pum_generic',
