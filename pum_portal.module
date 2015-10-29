@@ -5,3 +5,16 @@
  */
 
 include_once 'pum_portal.features.inc';
+
+function pum_portal_get_role_ids($roles) {
+  $rids = array();
+  $available_roles = user_roles();
+  foreach($roles as $role) {
+    $rid = array_search($role, $available_roles);
+    if ($rid !== false) {
+      $rids[$rid] = $rid;
+    }
+  }
+  
+  return $rids;
+}

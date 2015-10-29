@@ -19,7 +19,7 @@ function pum_portal_views_default_views() {
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
+  
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Expert';
@@ -29,8 +29,9 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'display_name' => 'display_name',
@@ -108,7 +109,6 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
   $handler->display->display_options['filters']['is_active']['value'] = '1';
-
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'country-experts';
@@ -220,13 +220,6 @@ function pum_portal_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
     t('CiviCRM Contact A'),
     t('CiviCRM Contact B'),
     t('Start Date'),
@@ -242,6 +235,7 @@ function pum_portal_views_default_views() {
     t('Block po'),
     t('Project Officer'),
   );
+
   $export['country_experts'] = $view;
 
   $view = new view();
@@ -261,9 +255,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['link_display'] = 'page';
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -1078,10 +1070,10 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('author'),
     t('Drupal User'),
     t('Read more..'),
@@ -1119,9 +1111,7 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['link_display'] = 'page_1';
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -1687,10 +1677,10 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('All'),
     t('Page'),
     t('more'),
@@ -1723,9 +1713,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['title'] = 'Latest News';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -2254,10 +2242,10 @@ if (user_access("create pum_portal_news content")) {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('Date'),
     t('Title'),
     t('Comments'),
@@ -2293,9 +2281,7 @@ if (user_access("create pum_portal_news content")) {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -2328,6 +2314,16 @@ if (user_access("create pum_portal_news content")) {
       'empty_column' => 0,
     ),
   );
+  /* Header: Button Add blog */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['ui_name'] = 'Button Add blog';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+    if (user_access("create pum_portal_blog content")) {
+      print l("+ Add Blog","node/add/pum-portal-blog");
+    }
+  ?>';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -2357,6 +2353,11 @@ if (user_access("create pum_portal_news content")) {
     'sector' => 'sector',
     'tags' => 0,
   );
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid_1']['id'] = 'tid_1';
   $handler->display->display_options['arguments']['tid_1']['table'] = 'taxonomy_index';
@@ -2375,6 +2376,7 @@ foreach ($account as $fieldname => $fieldvalue){
         }
    }
 }
+if (count($tids) == 0) return -1;
 return implode("+",$tids);';
   $handler->display->display_options['arguments']['tid_1']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['tid_1']['summary']['format'] = 'default_summary';
@@ -2695,10 +2697,10 @@ return implode("+",$tids);';
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('All'),
     t('Page'),
     t('more'),
@@ -2724,9 +2726,7 @@ return implode("+",$tids);';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -2739,6 +2739,16 @@ return implode("+",$tids);';
     'title' => 'title',
     'timestamp' => 'timestamp',
   );
+  /* Header: Button Add document */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['ui_name'] = 'Button Add document';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+    if (user_access("create pum_portal_document content")) {
+      print l("+ Add Document","node/add/pum-portal-document");
+    }
+  ?>';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -2775,6 +2785,11 @@ return implode("+",$tids);';
   $handler->display->display_options['fields']['field_document_file']['label'] = '';
   $handler->display->display_options['fields']['field_document_file']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_document_file']['click_sort_column'] = 'fid';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid_1']['id'] = 'tid_1';
   $handler->display->display_options['arguments']['tid_1']['table'] = 'taxonomy_index';
@@ -3024,10 +3039,10 @@ return implode("+",$tids);';
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('All'),
     t('Page'),
     t('more'),
@@ -3052,9 +3067,7 @@ return implode("+",$tids);';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -3125,6 +3138,16 @@ return implode("+",$tids);';
       'empty_column' => 0,
     ),
   );
+  /* Header: Button Add forum topic */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['ui_name'] = 'Button Add forum topic';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+  if (user_access("create pum_forum_item content")) {
+    print l("+ Add Forum Topic","node/add/pum-forum-item"); 
+  }
+  ?>';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
@@ -3150,8 +3173,8 @@ return implode("+",$tids);';
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
-  print theme(\'imagecache_external\', array(\'path\' => $row->image_URL, \'style_name\'=> \'small\'));
-?>';
+    print theme(\'imagecache_external\', array(\'path\' => $row->image_URL, \'style_name\'=> \'small\'));
+  ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Field: Content: Title */
@@ -3569,10 +3592,10 @@ return implode("+",$tids);';
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('author'),
     t('Drupal User'),
     t('Post date'),
@@ -3603,9 +3626,7 @@ return implode("+",$tids);';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -4071,10 +4092,10 @@ return implode("+",$tids);';
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('Forum'),
     t('<a href="/portal/my-latest-forum-topics">Forum</a> (@total)'),
     t('<a href="/portal/my-latest-forum-topics">Blogs</a>'),
@@ -4316,10 +4337,10 @@ return implode("+",$tids);';
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('- Choose an operation -'),
     t('Full Name'),
     t('All'),
@@ -4396,9 +4417,7 @@ return implode("+",$tids);';
   $handler->display->display_options['title'] = 'Country communities';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -4691,10 +4710,10 @@ Delete members of <?php print $tname; ?>
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('- Choose an operation -'),
     t('Full Name'),
     t('All'),
@@ -4792,10 +4811,10 @@ Delete members of <?php print $tname; ?>
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('Name'),
     t('Country'),
     t('Sector'),
@@ -4920,9 +4939,7 @@ Delete members of <?php print $tname; ?>
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -4971,6 +4988,16 @@ Delete members of <?php print $tname; ?>
       'empty_column' => 0,
     ),
   );
+  /* Header: Button Add news topic */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['ui_name'] = 'Button Add news topic';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+  if (user_access("create pum_portal_news content")) {
+    print l("+ Add News Topic","node/add/pum-portal-news");
+  }
+  ?>';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -5283,10 +5310,10 @@ return implode("+",$tids);';
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('Post date'),
     t('Comments'),
     t('.'),
@@ -5314,9 +5341,7 @@ return implode("+",$tids);';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -5689,10 +5714,10 @@ return implode("+",$tids);';
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('author'),
     t('Drupal User'),
     t('Post date'),
@@ -5720,9 +5745,7 @@ return implode("+",$tids);';
   $handler->display->display_options['title'] = 'Sector Communities';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -5911,10 +5934,10 @@ return implode("+",$tids);';
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('Rules'),
   );
   $export['portal_subscribers'] = $view;
@@ -6058,10 +6081,10 @@ View members of <?php print $tname; ?>
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('Full Name'),
     t('All'),
     t('Full Name Contains'),
@@ -6271,9 +6294,7 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['title'] = 'Directory';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -6616,10 +6637,10 @@ View members of <?php print $tname; ?>
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('Drupal User'),
     t('Contact ID'),
     t('.'),
@@ -6652,9 +6673,7 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'More';
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    2 => '2',
-  );
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -7393,10 +7412,10 @@ if (user_access("create pum_forum_item content")) {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('&laquo; first'),
+    t('&lsaquo; previous'),
+    t('next &rsaquo;'),
+    t('last &raquo;'),
     t('author'),
     t('Drupal User'),
     t('.'),
