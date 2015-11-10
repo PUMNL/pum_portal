@@ -118,7 +118,22 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
-
+  $handler->display->display_options['merge_rows'] = TRUE;
+  $handler->display->display_options['field_config'] = array(
+    'display_name' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+    'start_date' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+    'end_date' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+  );
+  
   /* Display: Block cc */
   $handler = $view->new_display('block', 'Block cc', 'block_1');
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -163,7 +178,22 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
   $handler->display->display_options['filters']['is_active']['value'] = '1';
-
+  $handler->display->display_options['merge_rows'] = TRUE;
+  $handler->display->display_options['field_config'] = array(
+    'id' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+    'display_name' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+    'description' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+  );
+  
   /* Display: Block rep */
   $handler = $view->new_display('block', 'Block rep', 'block_2');
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -180,7 +210,16 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['fields']['description']['field'] = 'description';
   $handler->display->display_options['fields']['description']['label'] = '';
   $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
-
+  $handler->display->display_options['field_config'] = array(
+    'display_name' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+    'description' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+  );
   /* Display: Block po */
   $handler = $view->new_display('block', 'Block po', 'block_3');
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -211,6 +250,17 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
   $handler->display->display_options['filters']['is_active']['value'] = '1';
+  $handler->display->display_options['merge_rows'] = TRUE;
+  $handler->display->display_options['field_config'] = array(
+    'display_name' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+    'description' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => '<br />',
+    ),
+  );
   $translatables['country_experts'] = array(
     t('Master'),
     t('Expert'),
