@@ -320,6 +320,16 @@ function pum_portal_views_default_views() {
     'created' => 'created',
     'body' => 'body',
   );
+  /* Header: Button Add blog */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['ui_name'] = 'Button Add blog';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+  if (user_access("create pum_portal_blog content")) {
+  print l("+ Add Blog","node/add/pum-portal-blog");
+  }
+  ?>';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
@@ -678,6 +688,48 @@ function pum_portal_views_default_views() {
     10 => 0,
   );
   $handler->display->display_options['filters']['tid_2']['vocabulary'] = 'tags';
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
+  $handler->display->display_options['filters']['language']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['language']['expose']['operator_id'] = 'language_op';
+  $handler->display->display_options['filters']['language']['expose']['label'] = 'Language';
+  $handler->display->display_options['filters']['language']['expose']['operator'] = 'language_op';
+  $handler->display->display_options['filters']['language']['expose']['identifier'] = 'language';
+  $handler->display->display_options['filters']['language']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
   $handler->display->display_options['path'] = 'portal/blog';
 
   /* Display: Block */
@@ -1133,6 +1185,7 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
     t('Country'),
     t('Sector'),
     t('Tags'),
+    t('Language'),
     t('Block'),
     t('[php]<br />[created]<br />[display_name]'),
     t('[title] <br /> [body] <br /> [field_blog_image]'),
@@ -1195,6 +1248,16 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
       'empty_column' => 0,
     ),
   );
+  /* Header: Button Add document */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['ui_name'] = 'Button Add document';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+  if (user_access("create pum_portal_document content")) {
+  print l("+ Add Document","node/add/pum-portal-document");
+  }
+  ?>';
   /* Field: Content: File */
   $handler->display->display_options['fields']['field_document_file']['id'] = 'field_document_file';
   $handler->display->display_options['fields']['field_document_file']['table'] = 'field_data_field_document_file';
@@ -1770,6 +1833,16 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* Header: Button Add Portal News Topic */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['ui_name'] = 'Button Add Portal News Topic';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+  if (user_access("create pum_portal_news content")) {
+    print l("+ Add News Topic","node/add/pum-portal-news");
+  }
+  ?>';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -2020,7 +2093,7 @@ if (user_access("create pum_portal_news content")) {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['text'] = '[title] [comment_count]';
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '95';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '150';
   $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
@@ -6787,6 +6860,16 @@ View members of <?php print $tname; ?>
       'empty_column' => 0,
     ),
   );
+  /* Header: Button Add Portal Forum Topic */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['ui_name'] = 'Button Add Portal Forum Topic';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php 
+  if (user_access("create pum_forum_item content")) {
+     print l("+ Add Forum Topic","node/add/pum-forum-item"); 
+  }
+  ?>';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -6870,6 +6953,11 @@ View members of <?php print $tname; ?>
     'sector' => 'sector',
     'tags' => 0,
   );
+  /* Sort criterion: Content: Sticky */
+  $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['table'] = 'node';
+  $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -6893,7 +6981,7 @@ View members of <?php print $tname; ?>
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Forum';
+  $handler->display->display_options['title'] = 'Fora';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -7127,6 +7215,7 @@ if (user_access("create pum_forum_item content")) {
 }
 ?>
 ';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: CiviCRM Contacts: Display Name */
   $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
@@ -7144,8 +7233,8 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['text'] = '[title] [comment_count]';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
@@ -7470,7 +7559,7 @@ if (user_access("create pum_forum_item content")) {
     t('Drupal User'),
     t('.'),
     t('Page'),
-    t('Forum'),
+    t('Fora'),
     t('more'),
     t('[display_name] | [created] '),
     t('Block'),
