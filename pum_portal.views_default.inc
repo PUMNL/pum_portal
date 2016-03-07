@@ -6538,10 +6538,18 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['filters']['rid']['field'] = 'rid';
   $handler->display->display_options['filters']['rid']['relationship'] = 'drupal_id';
   $handler->display->display_options['filters']['rid']['operator'] = 'not';
-  $handler->display->display_options['filters']['rid']['value'] = array(
-    4 => '4',
-  );
-
+  $handler->display->display_options['filters']['rid']['value'] = pum_portal_get_role_ids(array('Customer (contact)'));
+  /* Filter criterion: CiviCRM Contacts: Is Deceased */
+  $handler->display->display_options['filters']['is_deceased']['id'] = 'is_deceased';
+  $handler->display->display_options['filters']['is_deceased']['table'] = 'civicrm_contact';
+  $handler->display->display_options['filters']['is_deceased']['field'] = 'is_deceased';
+  $handler->display->display_options['filters']['is_deceased']['value'] = '0';
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'drupal_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -6609,35 +6617,11 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['phone']['table'] = 'civicrm_phone';
   $handler->display->display_options['fields']['phone']['field'] = 'phone';
   $handler->display->display_options['fields']['phone']['label'] = 'Phone';
-  $handler->display->display_options['fields']['phone']['exclude'] = TRUE;
   $handler->display->display_options['fields']['phone']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['phone']['location_type'] = '0';
   $handler->display->display_options['fields']['phone']['location_op'] = '0';
   $handler->display->display_options['fields']['phone']['is_primary'] = 1;
   $handler->display->display_options['fields']['phone']['phone_type'] = '0';
-  /* Field: Global: PHP */
-  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
-  $handler->display->display_options['fields']['php_1']['table'] = 'views';
-  $handler->display->display_options['fields']['php_1']['field'] = 'php';
-  $handler->display->display_options['fields']['php_1']['label'] = 'Phone';
-  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php 
-   $tel = false;
-   $uid = $data->users_civicrm_uf_match_uid; 
-   try {
-     $roles = $data->_field_data["users_civicrm_uf_match_uid"]["entity"]->roles;
-   }
-   catch (Exception $e) {} 
-   if (is_array($roles)) {
-        foreach($roles as $rid => $role){
-            if (stripos($role, "admin") !== false) { $tel = true;  break; }
-        }
-   }
-   if ($tel) print $row->phone;
-   print "";
-?>';
-  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
   $handler->display->display_options['path'] = 'portal/directory';
 
   /* Display: Block */
@@ -6748,6 +6732,11 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['filters']['rid']['value'] = array(
     4 => '4',
   );
+  /* Filter criterion: CiviCRM Contacts: Is Deceased */
+  $handler->display->display_options['filters']['is_deceased']['id'] = 'is_deceased';
+  $handler->display->display_options['filters']['is_deceased']['table'] = 'civicrm_contact';
+  $handler->display->display_options['filters']['is_deceased']['field'] = 'is_deceased';
+  $handler->display->display_options['filters']['is_deceased']['value'] = '0';
   $translatables['pum_portal_directory'] = array(
     t('Master'),
     t('Directory'),
