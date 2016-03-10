@@ -1625,6 +1625,16 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Button Add document */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['ui_name'] = 'Button Add document';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+if (user_access("create pum_portal_document content")) {
+print l("+ Add Document","node/add/pum-portal-document");
+}
+?>';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: File */
