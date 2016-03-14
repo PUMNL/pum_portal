@@ -7583,7 +7583,7 @@ if (user_access("create pum_forum_item content")) {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Sector coordinator';
+  $handler->display->display_options['title'] = '<none>';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -7591,8 +7591,28 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'id' => 'id',
+    'display_name' => 'display_name',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'display_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Field: CiviCRM Contacts: Contact ID */
   $handler->display->display_options['fields']['id']['id'] = 'id';
   $handler->display->display_options['fields']['id']['table'] = 'civicrm_contact';
@@ -7603,8 +7623,9 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
   $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
-  $handler->display->display_options['fields']['display_name']['label'] = '';
-  $handler->display->display_options['fields']['display_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['display_name']['label'] = 'Coordinator';
+  $handler->display->display_options['fields']['display_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['display_name']['alter']['path'] = 'portal/directory/[id]';
   $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
   /* Contextual filter: CiviCRM Contacts: Contact ID */
   $handler->display->display_options['arguments']['id']['id'] = 'id';
@@ -7620,7 +7641,7 @@ if (user_access("create pum_forum_item content")) {
   $handler = $view->new_display('block', 'Block', 'block');
   $translatables['sector_coordinator'] = array(
     t('Master'),
-    t('Sector coordinator'),
+    t('<none>'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -7629,6 +7650,7 @@ if (user_access("create pum_forum_item content")) {
     t('Desc'),
     t('Contact ID'),
     t('.'),
+    t('Coordinator'),
     t('All'),
     t('Block'),
   );
