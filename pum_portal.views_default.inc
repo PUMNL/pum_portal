@@ -3927,7 +3927,6 @@ return implode("+",$tids);';
   $handler->display->display_options['arguments']['tid_1']['default_argument_options']['code'] = 'global $user;
 $account = user_load($user->uid);
 $tids=array();
-$tids[]=-1;
 foreach ($account as $fieldname => $fieldvalue){
    if (substr_compare($fieldname, "field_", 0)) {
         if (isset($fieldvalue["und"]) && is_array($fieldvalue["und"])){
@@ -3984,14 +3983,14 @@ return implode("+",$tids);';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['label'] = 'Fora';
-  $handler->display->display_options['header']['result']['content'] = '<a href="/portal/forum">Fora  (@total)</a>';
+  $handler->display->display_options['header']['result']['content'] = '<a href="/portal/my-latest-forum-topics">Fora  (@total)</a>';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area_text_custom']['content'] = '<a href="/portal/forum">Fora</a>';
+  $handler->display->display_options['empty']['area_text_custom']['content'] = '<a href="/portal/my-latest-forum-topics">Fora</a>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -4207,7 +4206,7 @@ return implode("+",$tids);';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'pum_portal_news' => 'pum_portal_news',
+    'pum_portal_document' => 'pum_portal_document',
   );
   /* Filter criterion: Content: Has new content */
   $handler->display->display_options['filters']['timestamp']['id'] = 'timestamp';
@@ -4239,8 +4238,8 @@ return implode("+",$tids);';
     t('All'),
     t('Block-forum'),
     t('Fora'),
-    t('<a href="/portal/forum">Fora  (@total)</a>'),
-    t('<a href="/portal/forum">Fora</a>'),
+    t('<a href="/portal/my-latest-forum-topics">Fora  (@total)</a>'),
+    t('<a href="/portal/my-latest-forum-topics">Fora</a>'),
     t('Block-blogs'),
     t('<a href="/portal/my-blog">Blogs (@total)</a>'),
     t('<a href="/portal/my-blog">Blogs</a>'),
