@@ -1599,6 +1599,42 @@ function pum_portal_field_default_field_instances() {
     ),
   );
 
+    // Exported field_instance: 'taxonomy_term-sector-field_pum_segment_id'
+    $field_instances['taxonomy_term-sector-field_pum_segment_id'] = array(
+        'bundle' => 'sector',
+        'default_value' => NULL,
+        'deleted' => 0,
+        'description' => '',
+        'display' => array(
+            'default' => array(
+                'label' => 'hidden',
+                'settings' => array(),
+                'type' => 'hidden',
+                'weight' => 0,
+            ),
+        ),
+        'ds_extras_field_template' => '',
+        'entity_type' => 'taxonomy_term',
+        'field_name' => 'field_pum_segment_id',
+        'label' => 'Segment ID',
+        'required' => 0,
+        'settings' => array(
+            'entity_translation_sync' => FALSE,
+            'max' => '',
+            'min' => '',
+            'prefix' => '',
+            'suffix' => '',
+            'user_register_form' => FALSE,
+        ),
+        'widget' => array(
+            'active' => 0,
+            'module' => 'number',
+            'settings' => array(),
+            'type' => 'number',
+            'weight' => 31,
+        ),
+    );
+
   // Exported field_instance: 'taxonomy_term-sector-field_pum_tag_id'
   $field_instances['taxonomy_term-sector-field_pum_tag_id'] = array(
     'bundle' => 'sector',
