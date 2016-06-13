@@ -1656,6 +1656,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['fields']['sticky']['table'] = 'node';
   $handler->display->display_options['fields']['sticky']['field'] = 'sticky';
   $handler->display->display_options['fields']['sticky']['label'] = '';
+  $handler->display->display_options['fields']['sticky']['exclude'] = TRUE;
   $handler->display->display_options['fields']['sticky']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['sticky']['type'] = 'custom';
   $handler->display->display_options['fields']['sticky']['type_custom_true'] = 'sticky';
@@ -1995,6 +1996,7 @@ print l("+ Add Document","node/add/pum-portal-document");
   $handler->display->display_options['fields']['sticky']['table'] = 'node';
   $handler->display->display_options['fields']['sticky']['field'] = 'sticky';
   $handler->display->display_options['fields']['sticky']['label'] = '';
+  $handler->display->display_options['fields']['sticky']['exclude'] = TRUE;
   $handler->display->display_options['fields']['sticky']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['sticky']['type'] = 'custom';
   $handler->display->display_options['fields']['sticky']['type_custom_true'] = 'sticky';
