@@ -1,7 +1,7 @@
 name = Pum Portal
 core = 7.x
 package = Features
-version = "7.x-1.14.3"
+version = "7.x-1.14.4"
 project = pum_portal
 dependencies[] = abt
 dependencies[] = apachesolr
@@ -169,7 +169,6 @@ features[page_manager_pages][] = communities_overview_page
 features[page_manager_pages][] = general_communities_page
 features[page_manager_pages][] = portal
 features[rules_config][] = rules_logindestination
-features[rules_config][] = rules_usersavedestination
 features[taxonomy][] = countries
 features[taxonomy][] = portal_type
 features[taxonomy][] = private_group
