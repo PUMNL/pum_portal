@@ -312,6 +312,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['inline'] = array(
     'image_URL' => 'image_URL',
@@ -339,6 +340,17 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['relationships']['drupal_id']['table'] = 'civicrm_contact';
   $handler->display->display_options['relationships']['drupal_id']['field'] = 'drupal_id';
   $handler->display->display_options['relationships']['drupal_id']['relationship'] = 'uid';
+  /* Field: Content: Sticky */
+  $handler->display->display_options['fields']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['table'] = 'node';
+  $handler->display->display_options['fields']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['label'] = '';
+  $handler->display->display_options['fields']['sticky']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['sticky']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['sticky']['type'] = 'custom';
+  $handler->display->display_options['fields']['sticky']['type_custom_true'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['type_custom_false'] = 'not-sticky';
+  $handler->display->display_options['fields']['sticky']['not'] = 0;
   /* Field: CiviCRM Contacts: Image Url */
   $handler->display->display_options['fields']['image_URL']['id'] = 'image_URL';
   $handler->display->display_options['fields']['image_URL']['table'] = 'civicrm_contact';
@@ -373,17 +385,6 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['fields']['created']['label'] = '';
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  /* Field: Content: Blog Image */
-  $handler->display->display_options['fields']['field_blog_image']['id'] = 'field_blog_image';
-  $handler->display->display_options['fields']['field_blog_image']['table'] = 'field_data_field_blog_image';
-  $handler->display->display_options['fields']['field_blog_image']['field'] = 'field_blog_image';
-  $handler->display->display_options['fields']['field_blog_image']['label'] = '';
-  $handler->display->display_options['fields']['field_blog_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_blog_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_blog_image']['settings'] = array(
-    'image_style' => 'medium',
-    'image_link' => 'content',
-  );
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -417,6 +418,11 @@ function pum_portal_views_default_views() {
     'sector' => 'sector',
     'tags' => 0,
   );
+  /* Sort criterion: Content: Sticky */
+  $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['table'] = 'node';
+  $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -446,6 +452,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
   $handler->display->display_options['style_options']['columns'] = array(
     'image_URL' => 'image_URL',
     'php' => 'php',
@@ -513,6 +520,17 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Sticky */
+  $handler->display->display_options['fields']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['table'] = 'node';
+  $handler->display->display_options['fields']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['label'] = '';
+  $handler->display->display_options['fields']['sticky']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['sticky']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['sticky']['type'] = 'custom';
+  $handler->display->display_options['fields']['sticky']['type_custom_true'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['type_custom_false'] = 'not-sticky';
+  $handler->display->display_options['fields']['sticky']['not'] = 0;
   /* Field: CiviCRM Contacts: Image Url */
   $handler->display->display_options['fields']['image_URL']['id'] = 'image_URL';
   $handler->display->display_options['fields']['image_URL']['table'] = 'civicrm_contact';
@@ -547,17 +565,6 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['fields']['created']['label'] = '';
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  /* Field: Content: Blog Image */
-  $handler->display->display_options['fields']['field_blog_image']['id'] = 'field_blog_image';
-  $handler->display->display_options['fields']['field_blog_image']['table'] = 'field_data_field_blog_image';
-  $handler->display->display_options['fields']['field_blog_image']['field'] = 'field_blog_image';
-  $handler->display->display_options['fields']['field_blog_image']['label'] = '';
-  $handler->display->display_options['fields']['field_blog_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_blog_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_blog_image']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => 'content',
-  );
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -730,6 +737,12 @@ function pum_portal_views_default_views() {
     29 => 0,
     30 => 0,
   );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['path'] = 'portal/blog';
 
   /* Display: Block */
@@ -746,6 +759,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
   $handler->display->display_options['style_options']['columns'] = array(
     'display_name' => 'display_name',
     'title' => 'title',
@@ -832,6 +846,17 @@ print l("+ Add Blog","node/add/pum-portal-blog");
 
 ?>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Sticky */
+  $handler->display->display_options['fields']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['table'] = 'node';
+  $handler->display->display_options['fields']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['label'] = '';
+  $handler->display->display_options['fields']['sticky']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['sticky']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['sticky']['type'] = 'custom';
+  $handler->display->display_options['fields']['sticky']['type_custom_true'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['type_custom_false'] = 'not-sticky';
+  $handler->display->display_options['fields']['sticky']['not'] = 0;
   /* Field: CiviCRM Contacts: Display Name */
   $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
@@ -890,18 +915,6 @@ print l("+ Add Blog","node/add/pum-portal-blog");
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '150',
   );
-  /* Field: Content: Blog Image */
-  $handler->display->display_options['fields']['field_blog_image']['id'] = 'field_blog_image';
-  $handler->display->display_options['fields']['field_blog_image']['table'] = 'field_data_field_blog_image';
-  $handler->display->display_options['fields']['field_blog_image']['field'] = 'field_blog_image';
-  $handler->display->display_options['fields']['field_blog_image']['label'] = '';
-  $handler->display->display_options['fields']['field_blog_image']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_blog_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_blog_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_blog_image']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => 'content',
-  );
   /* Field: Content: Link */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
@@ -931,6 +944,12 @@ print l("+ Add Blog","node/add/pum-portal-blog");
     'tags' => 0,
     'type_partner' => 0,
   );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
 
   /* Display: Term Page */
   $handler = $view->new_display('page', 'Term Page', 'page_1');
@@ -1085,6 +1104,17 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
 
 ?>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Sticky */
+  $handler->display->display_options['fields']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['table'] = 'node';
+  $handler->display->display_options['fields']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['label'] = '';
+  $handler->display->display_options['fields']['sticky']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['sticky']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['sticky']['type'] = 'custom';
+  $handler->display->display_options['fields']['sticky']['type_custom_true'] = 'sticky';
+  $handler->display->display_options['fields']['sticky']['type_custom_false'] = 'not-sticky';
+  $handler->display->display_options['fields']['sticky']['not'] = 0;
   /* Field: CiviCRM Contacts: Image Url */
   $handler->display->display_options['fields']['image_URL']['id'] = 'image_URL';
   $handler->display->display_options['fields']['image_URL']['table'] = 'civicrm_contact';
@@ -1851,6 +1881,12 @@ print l("+ Add Document","node/add/pum-portal-document");
     10 => 0,
   );
   $handler->display->display_options['filters']['tid_3']['vocabulary'] = 'tags';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['path'] = 'portal/library';
   $translatables['latest_portal_documents'] = array(
     t('Master'),
