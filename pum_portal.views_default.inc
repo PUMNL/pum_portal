@@ -452,7 +452,9 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['style_options']['columns'] = array(
     'image_URL' => 'image_URL',
     'php' => 'php',
@@ -463,7 +465,6 @@ function pum_portal_views_default_views() {
     'view_node' => 'view_node',
     'term_node_tid' => 'term_node_tid',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'image_URL' => array(
       'sortable' => 0,
@@ -516,7 +517,6 @@ function pum_portal_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -759,7 +759,8 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['style_options']['columns'] = array(
     'display_name' => 'display_name',
     'title' => 'title',
@@ -831,7 +832,6 @@ function pum_portal_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -1014,6 +1014,7 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
   $handler->display->display_options['style_options']['columns'] = array(
     'image_URL' => 'image_URL',
     'php' => 'php',
@@ -1371,6 +1372,8 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -1393,7 +1396,8 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['style_options']['columns'] = array(
     'field_document_file' => 'field_document_file',
     'title' => 'title',
@@ -1429,7 +1433,6 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -1707,6 +1710,8 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler = $view->new_display('page', 'Library', 'page_2');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'all-topics';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Button Add document */
   $handler->display->display_options['header']['php']['id'] = 'php';
@@ -7179,7 +7184,7 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
+  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['style_options']['columns'] = array(
     'image_URL' => 'image_URL',
     'php' => 'php',
@@ -7349,7 +7354,7 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
+  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['style_options']['columns'] = array(
     'display_name' => 'display_name',
     'title' => 'title',
