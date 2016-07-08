@@ -2071,7 +2071,7 @@ print l("+ Add Document","node/add/pum-portal-document");
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
+  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['style_options']['columns'] = array(
     'created' => 'title',
     'title' => 'title',
@@ -2199,7 +2199,7 @@ print l("+ Add Document","node/add/pum-portal-document");
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['row_class'] = '[sticky]';
+  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
     'created' => 'title',
