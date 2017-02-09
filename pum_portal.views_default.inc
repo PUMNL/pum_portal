@@ -1373,7 +1373,6 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -1396,8 +1395,6 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['style_options']['columns'] = array(
     'field_document_file' => 'field_document_file',
     'title' => 'title',
@@ -1433,6 +1430,7 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
       'empty_column' => 0,
     ),
   );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -1443,7 +1441,7 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['header']['php']['php_output'] = '<?php
 if (user_access("create pum_portal_document content")) {
 print l("+ Add Document","node/add/pum-portal-document");
- }
+}
 
 ?>
 ';
@@ -1629,7 +1627,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
  if (is_object($term)) $termname = $term->name; 
 
 if (user_access("create pum_portal_document content")) {
-print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/documents"))); 
+print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library"))); 
  }
 
 ?>';
@@ -1645,7 +1643,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
  if (is_object($term)) $termname = $term->name; 
 
 if (user_access("create pum_portal_document content")) {
-print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/documents"))); 
+print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library"))); 
  }
 
 ?>';
@@ -1711,7 +1709,6 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['style_options']['row_class'] = '';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Button Add document */
   $handler->display->display_options['header']['php']['id'] = 'php';
