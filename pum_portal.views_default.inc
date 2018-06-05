@@ -19,7 +19,7 @@ function pum_portal_views_default_views() {
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-  
+
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Expert';
@@ -133,7 +133,7 @@ function pum_portal_views_default_views() {
       'separator' => '<br />',
     ),
   );
-  
+
   /* Display: Block cc */
   $handler = $view->new_display('block', 'Block cc', 'block_1');
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -193,7 +193,7 @@ function pum_portal_views_default_views() {
       'separator' => '<br />',
     ),
   );
-  
+
   /* Display: Block rep */
   $handler = $view->new_display('block', 'Block rep', 'block_2');
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -961,9 +961,9 @@ print l("+ Add Blog","node/add/pum-portal-blog");
   $handler->display->display_options['header']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 if (user_access("create pum_portal_blog content")) {
-print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/blog"))); 
+print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/blog")));
  }
 
 ?>
@@ -978,9 +978,9 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['empty']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 if (user_access("create pum_portal_blog content")) {
-print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/blog"))); 
+print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/blog")));
  }
 
 ?>';
@@ -1083,9 +1083,9 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['header']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 if (user_access("create pum_portal_blog content")) {
-print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/blog"))); 
+print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/blog")));
  }
 
 ?>';
@@ -1098,9 +1098,9 @@ print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => 
   $handler->display->display_options['empty']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 if (user_access("create pum_portal_blog content")) {
-print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/blog"))); 
+print l("+ Add ".$termname." Blog","node/add/pum-portal-blog", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/blog")));
  }
 
 ?>';
@@ -1516,10 +1516,10 @@ print l("+ Add Document","node/add/pum-portal-document");
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
  $termname="";
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_portal_document content")) {
-print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library"))); 
+print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library")));
  }
 
 ?>';
@@ -1533,10 +1533,10 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
  $termname="";
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_portal_document content")) {
-print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library"))); 
+print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library")));
  }
 
 ?>';
@@ -1624,10 +1624,10 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['header']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_portal_document content")) {
-print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library"))); 
+print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library")));
  }
 
 ?>';
@@ -1640,10 +1640,10 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['empty']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_portal_document content")) {
-print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library"))); 
+print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/library")));
  }
 
 ?>';
@@ -2339,10 +2339,10 @@ if (user_access("create pum_portal_news content")) {
   $handler->display->display_options['header']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_portal_news content")) {
- print l("+ Add ".$termname." News Topic","node/add/pum-portal-news", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/news"))); 
+ print l("+ Add ".$termname." News Topic","node/add/pum-portal-news", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/news")));
  }
 
 ?>
@@ -2357,10 +2357,10 @@ if (user_access("create pum_portal_news content")) {
   $handler->display->display_options['empty']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_portal_news content")) {
- print l("+ Add ".$termname." News Topic","node/add/pum-portal-news", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/news"))); 
+ print l("+ Add ".$termname." News Topic","node/add/pum-portal-news", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/news")));
  }
 
 ?>
@@ -2446,10 +2446,10 @@ if (user_access("create pum_portal_news content")) {
   $handler->display->display_options['header']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_portal_news content")) {
- print l("+ Add ".$termname." News Topic","node/add/pum-portal-news", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/news"))); 
+ print l("+ Add ".$termname." News Topic","node/add/pum-portal-news", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/news")));
  }
 
 ?>
@@ -2464,10 +2464,10 @@ if (user_access("create pum_portal_news content")) {
   $handler->display->display_options['empty']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_portal_news content")) {
- print l("+ Add ".$termname." News Topic","node/add/pum-portal-news", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/news"))); 
+ print l("+ Add ".$termname." News Topic","node/add/pum-portal-news", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/news")));
  }
 
 ?>
@@ -3127,7 +3127,7 @@ foreach ($account as $fieldname => $fieldvalue){
         if (isset($fieldvalue["und"]) && is_array($fieldvalue["und"])){
             foreach($fieldvalue["und"] as $vals){
                if (isset($vals["tid"])) $tids[]=$vals["tid"];
-            }            
+            }
         }
    }
 }
@@ -3468,7 +3468,7 @@ return implode("+",$tids);';
   $handler->display->display_options['header']['php']['ui_name'] = 'Button Add forum topic';
   $handler->display->display_options['header']['php']['php_output'] = '<?php
   if (user_access("create pum_forum_item content")) {
-    print l("+ Add Forum Topic","node/add/pum-forum-item"); 
+    print l("+ Add Forum Topic","node/add/pum-forum-item");
   }
   ?>';
   /* Relationship: Content: Author */
@@ -6823,119 +6823,6 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['phone']['phone_type'] = '0';
   $handler->display->display_options['path'] = 'portal/directory';
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '5';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: CiviCRM Contacts: Image Url */
-  $handler->display->display_options['fields']['image_URL']['id'] = 'image_URL';
-  $handler->display->display_options['fields']['image_URL']['table'] = 'civicrm_contact';
-  $handler->display->display_options['fields']['image_URL']['field'] = 'image_URL';
-  $handler->display->display_options['fields']['image_URL']['label'] = '';
-  $handler->display->display_options['fields']['image_URL']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['image_URL']['element_label_colon'] = FALSE;
-  /* Field: Global: PHP */
-  $handler->display->display_options['fields']['php']['id'] = 'php';
-  $handler->display->display_options['fields']['php']['table'] = 'views';
-  $handler->display->display_options['fields']['php']['field'] = 'php';
-  $handler->display->display_options['fields']['php']['label'] = '';
-  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_output'] = '<?php
-  if ($row->image_URL) {
-    print theme(\'imagecache_external\', array(\'path\' => $row->image_URL, \'style_name\'=> \'portal_directory_header\'));
-  }
-  else {
-    print \'<img src="http://placehold.it/150x150" />\';
-  }
-?>';
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: CiviCRM Contacts: Contact ID */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'civicrm_contact';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  $handler->display->display_options['fields']['id']['exclude'] = TRUE;
-  /* Field: CiviCRM Contacts: Display Name */
-  $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
-  $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
-  $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
-  $handler->display->display_options['fields']['display_name']['label'] = 'Full Name';
-  $handler->display->display_options['fields']['display_name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
-  /* Field: User: E-mail */
-  $handler->display->display_options['fields']['mail']['id'] = 'mail';
-  $handler->display->display_options['fields']['mail']['table'] = 'users';
-  $handler->display->display_options['fields']['mail']['field'] = 'mail';
-  $handler->display->display_options['fields']['mail']['relationship'] = 'drupal_id';
-  $handler->display->display_options['fields']['mail']['exclude'] = TRUE;
-  /* Field: User: User Sector */
-  $handler->display->display_options['fields']['field_pum_user_sector']['id'] = 'field_pum_user_sector';
-  $handler->display->display_options['fields']['field_pum_user_sector']['table'] = 'field_data_field_pum_user_sector';
-  $handler->display->display_options['fields']['field_pum_user_sector']['field'] = 'field_pum_user_sector';
-  $handler->display->display_options['fields']['field_pum_user_sector']['relationship'] = 'drupal_id';
-  $handler->display->display_options['fields']['field_pum_user_sector']['label'] = 'Sector';
-  $handler->display->display_options['fields']['field_pum_user_sector']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_pum_user_sector']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Global: Random */
-  $handler->display->display_options['sorts']['random']['id'] = 'random';
-  $handler->display->display_options['sorts']['random']['table'] = 'views';
-  $handler->display->display_options['sorts']['random']['field'] = 'random';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: CiviCRM Contacts: Display Name */
-  $handler->display->display_options['filters']['display_name']['id'] = 'display_name';
-  $handler->display->display_options['filters']['display_name']['table'] = 'civicrm_contact';
-  $handler->display->display_options['filters']['display_name']['field'] = 'display_name';
-  $handler->display->display_options['filters']['display_name']['operator'] = 'contains';
-  $handler->display->display_options['filters']['display_name']['group'] = 1;
-  $handler->display->display_options['filters']['display_name']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['display_name']['expose']['operator_id'] = 'display_name_op';
-  $handler->display->display_options['filters']['display_name']['expose']['label'] = 'Full Name Contains';
-  $handler->display->display_options['filters']['display_name']['expose']['operator'] = 'display_name_op';
-  $handler->display->display_options['filters']['display_name']['expose']['identifier'] = 'display_name';
-  $handler->display->display_options['filters']['display_name']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-  );
-  /* Filter criterion: CiviCRM Contacts: Image Url */
-  $handler->display->display_options['filters']['image_URL']['id'] = 'image_URL';
-  $handler->display->display_options['filters']['image_URL']['table'] = 'civicrm_contact';
-  $handler->display->display_options['filters']['image_URL']['field'] = 'image_URL';
-  $handler->display->display_options['filters']['image_URL']['operator'] = 'not empty';
-  /* Filter criterion: User: Roles */
-  $handler->display->display_options['filters']['rid']['id'] = 'rid';
-  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
-  $handler->display->display_options['filters']['rid']['field'] = 'rid';
-  $handler->display->display_options['filters']['rid']['relationship'] = 'drupal_id';
-  $handler->display->display_options['filters']['rid']['operator'] = 'not';
-  $handler->display->display_options['filters']['rid']['value'] = array(
-    4 => '4',
-  );
-  /* Filter criterion: CiviCRM Contacts: Is Deceased */
-  $handler->display->display_options['filters']['is_deceased']['id'] = 'is_deceased';
-  $handler->display->display_options['filters']['is_deceased']['table'] = 'civicrm_contact';
-  $handler->display->display_options['filters']['is_deceased']['field'] = 'is_deceased';
-  $handler->display->display_options['filters']['is_deceased']['value'] = '0';
   $translatables['pum_portal_directory'] = array(
     t('Master'),
     t('Directory'),
@@ -7054,9 +6941,9 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['header']['php']['table'] = 'views';
   $handler->display->display_options['header']['php']['field'] = 'php';
   $handler->display->display_options['header']['php']['ui_name'] = 'Button Add Portal Forum Topic';
-  $handler->display->display_options['header']['php']['php_output'] = '<?php 
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
   if (user_access("create pum_forum_item content")) {
-     print l("+ Add Forum Topic","node/add/pum-forum-item"); 
+     print l("+ Add Forum Topic","node/add/pum-forum-item");
   }
   ?>';
   /* No results behavior: Global: Text area */
@@ -7417,9 +7304,9 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['header']['php']['id'] = 'php';
   $handler->display->display_options['header']['php']['table'] = 'views';
   $handler->display->display_options['header']['php']['field'] = 'php';
-  $handler->display->display_options['header']['php']['php_output'] = '<?php 
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
 if (user_access("create pum_forum_item content")) {
- print l("+ Add Forum Topic","node/add/pum-forum-item"); 
+ print l("+ Add Forum Topic","node/add/pum-forum-item");
 }
 ?>
 ';
@@ -7601,13 +7488,13 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['header']['php']['id'] = 'php';
   $handler->display->display_options['header']['php']['table'] = 'views';
   $handler->display->display_options['header']['php']['field'] = 'php';
-  $handler->display->display_options['header']['php']['php_output'] = '<?php 
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_forum_item content")) {
- print l("+ Add ".$termname." Forum Topic","node/add/pum-forum-item", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/forum"))); 
+ print l("+ Add ".$termname." Forum Topic","node/add/pum-forum-item", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/forum")));
 }
 ?>
 ';
@@ -7618,13 +7505,13 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['empty']['php']['table'] = 'views';
   $handler->display->display_options['empty']['php']['field'] = 'php';
   $handler->display->display_options['empty']['php']['empty'] = TRUE;
-  $handler->display->display_options['empty']['php']['php_output'] = '<?php 
+  $handler->display->display_options['empty']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_forum_item content")) {
- print l("+ Add ".$termname." Forum Topic","node/add/pum-forum-item", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/forum"))); 
+ print l("+ Add ".$termname." Forum Topic","node/add/pum-forum-item", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/forum")));
 }
 ?>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -7745,13 +7632,13 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['header']['php']['id'] = 'php';
   $handler->display->display_options['header']['php']['table'] = 'views';
   $handler->display->display_options['header']['php']['field'] = 'php';
-  $handler->display->display_options['header']['php']['php_output'] = '<?php 
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_forum_item content")) {
- print l("+ Add ".$termname." Forum Topic","node/add/pum-forum-item", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/forum"))); 
+ print l("+ Add ".$termname." Forum Topic","node/add/pum-forum-item", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/forum")));
 }
 ?>';
   $handler->display->display_options['defaults']['empty'] = FALSE;
@@ -7760,13 +7647,13 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['empty']['php']['table'] = 'views';
   $handler->display->display_options['empty']['php']['field'] = 'php';
   $handler->display->display_options['empty']['php']['empty'] = TRUE;
-  $handler->display->display_options['empty']['php']['php_output'] = '<?php 
+  $handler->display->display_options['empty']['php']['php_output'] = '<?php
  $tid= $view->args[0];
  $term = taxonomy_term_load($tid);
- if (is_object($term)) $termname = $term->name; 
+ if (is_object($term)) $termname = $term->name;
 
 if (user_access("create pum_forum_item content")) {
- print l("+ Add ".$termname." Forum Topic","node/add/pum-forum-item", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/forum"))); 
+ print l("+ Add ".$termname." Forum Topic","node/add/pum-forum-item", array("query" => array("term"=>$tid,"destination"=>"portal/".$tid."/forum")));
 }
 ?>';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
