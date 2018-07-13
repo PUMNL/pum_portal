@@ -7445,6 +7445,53 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'drupal_id';
   $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filter criterion: User: E-mail */
+  $handler->display->display_options['filters']['mail']['id'] = 'mail';
+  $handler->display->display_options['filters']['mail']['table'] = 'users';
+  $handler->display->display_options['filters']['mail']['field'] = 'mail';
+  $handler->display->display_options['filters']['mail']['relationship'] = 'drupal_id';
+  $handler->display->display_options['filters']['mail']['operator'] = 'not_ends';
+  $handler->display->display_options['filters']['mail']['value'] = '@example.com';
+  /* Filter criterion: CiviCRM Address: Country */
+  $handler->display->display_options['filters']['country']['id'] = 'country';
+  $handler->display->display_options['filters']['country']['table'] = 'civicrm_address';
+  $handler->display->display_options['filters']['country']['field'] = 'country';
+  $handler->display->display_options['filters']['country']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['country']['expose']['operator_id'] = 'country_op';
+  $handler->display->display_options['filters']['country']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['country']['expose']['operator'] = 'country_op';
+  $handler->display->display_options['filters']['country']['expose']['identifier'] = 'country';
+  $handler->display->display_options['filters']['country']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['country']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -7500,13 +7547,6 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
   $handler->display->display_options['fields']['mail']['relationship'] = 'drupal_id';
-  /* Field: User: User Sector */
-  $handler->display->display_options['fields']['field_pum_user_sector']['id'] = 'field_pum_user_sector';
-  $handler->display->display_options['fields']['field_pum_user_sector']['table'] = 'field_data_field_pum_user_sector';
-  $handler->display->display_options['fields']['field_pum_user_sector']['field'] = 'field_pum_user_sector';
-  $handler->display->display_options['fields']['field_pum_user_sector']['relationship'] = 'drupal_id';
-  $handler->display->display_options['fields']['field_pum_user_sector']['label'] = 'Sector';
-  $handler->display->display_options['fields']['field_pum_user_sector']['type'] = 'taxonomy_term_reference_plain';
   /* Field: CiviCRM Phone Details: Phone Number */
   $handler->display->display_options['fields']['phone']['id'] = 'phone';
   $handler->display->display_options['fields']['phone']['table'] = 'civicrm_phone';
@@ -7518,7 +7558,28 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['phone']['is_primary'] = 1;
   $handler->display->display_options['fields']['phone']['phone_type'] = '0';
   $handler->display->display_options['path'] = 'portal/directory';
-
+  /* Field: User: User Sector */
+  $handler->display->display_options['fields']['field_pum_user_sector']['id'] = 'field_pum_user_sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['table'] = 'field_data_field_pum_user_sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['field'] = 'field_pum_user_sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['relationship'] = 'drupal_id';
+  $handler->display->display_options['fields']['field_pum_user_sector']['label'] = 'Sector';
+  $handler->display->display_options['fields']['field_pum_user_sector']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: CiviCRM Address: Country */
+  $handler->display->display_options['fields']['country']['id'] = 'country';
+  $handler->display->display_options['fields']['country']['table'] = 'civicrm_address';
+  $handler->display->display_options['fields']['country']['field'] = 'country';
+  $handler->display->display_options['fields']['country']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['country']['location_type'] = '0';
+  $handler->display->display_options['fields']['country']['location_op'] = '0';
+  $handler->display->display_options['fields']['country']['is_primary'] = 1;
+  $handler->display->display_options['fields']['country']['is_billing'] = 0;
+  $handler->display->display_options['fields']['country']['country_display'] = '2';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: CiviCRM Contacts: Last Name */
+  $handler->display->display_options['sorts']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['sorts']['last_name']['table'] = 'civicrm_contact';
+  $handler->display->display_options['sorts']['last_name']['field'] = 'last_name';
   $translatables['pum_portal_directory'] = array(
     t('Master'),
     t('Directory'),
