@@ -674,63 +674,21 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['fields']['comment_count']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['comment_count']['format_plural'] = TRUE;
   $handler->display->display_options['fields']['comment_count']['prefix'] = '&#128172;';
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
-  $handler->display->display_options['fields']['body']['settings'] = array(
-    'trim_length' => '70',
-  );
-  /* Field: Content: Link */
-  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['label'] = '';
-  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['view_node']['text'] = 'Read more..';
-  /* Field: Content: All taxonomy terms */
-  $handler->display->display_options['fields']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['fields']['term_node_tid']['label'] = '';
-  $handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['term_node_tid']['element_type'] = 'em';
-  $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
-  $handler->display->display_options['fields']['term_node_tid']['limit'] = TRUE;
-  $handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
-    'countries' => 'countries',
-    'pum_generic' => 'pum_generic',
-    'private_group' => 'private_group',
-    'sector' => 'sector',
-    'faq_category' => 0,
-    'manual' => 0,
-    'portal_type' => 0,
-    'region' => 0,
-    'supersector' => 0,
-    'tags' => 0,
-    'theme' => 0,
-    'type_partner' => 0,
-  );
+  /* Field: Content: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'node';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = '';
+  $handler->display->display_options['fields']['changed']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['changed']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'short';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
   $handler->display->display_options['path'] = 'portal/blog';
 
   /* Display: Block */
@@ -793,30 +751,6 @@ if (user_access("create pum_portal_blog content")) {
   $handler->display->display_options['fields']['comment_count']['separator'] = '';
   $handler->display->display_options['fields']['comment_count']['format_plural'] = TRUE;
   $handler->display->display_options['fields']['comment_count']['prefix'] = '&#128172;';
-  /* Field: Content: All taxonomy terms */
-  $handler->display->display_options['fields']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['fields']['term_node_tid']['label'] = '';
-  $handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['term_node_tid']['element_type'] = 'em';
-  $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
-  $handler->display->display_options['fields']['term_node_tid']['limit'] = TRUE;
-  $handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
-    'countries' => 'countries',
-    'pum_generic' => 'pum_generic',
-    'private_group' => 'private_group',
-    'sector' => 'sector',
-    'faq_category' => 0,
-    'manual' => 0,
-    'portal_type' => 0,
-    'region' => 0,
-    'supersector' => 0,
-    'tags' => 0,
-    'theme' => 0,
-    'type_partner' => 0,
-  );
   /* Field: Content: Sticky */
   $handler->display->display_options['fields']['sticky']['id'] = 'sticky';
   $handler->display->display_options['fields']['sticky']['table'] = 'node';
@@ -915,30 +849,6 @@ if (user_access("create pum_portal_blog content")) {
   $handler->display->display_options['fields']['comment_count']['separator'] = '';
   $handler->display->display_options['fields']['comment_count']['format_plural'] = TRUE;
   $handler->display->display_options['fields']['comment_count']['prefix'] = '&#128172;';
-  /* Field: Content: All taxonomy terms */
-  $handler->display->display_options['fields']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['fields']['term_node_tid']['label'] = '';
-  $handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['term_node_tid']['element_type'] = 'em';
-  $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
-  $handler->display->display_options['fields']['term_node_tid']['limit'] = TRUE;
-  $handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
-    'countries' => 'countries',
-    'pum_generic' => 'pum_generic',
-    'private_group' => 'private_group',
-    'sector' => 'sector',
-    'faq_category' => 0,
-    'manual' => 0,
-    'portal_type' => 0,
-    'region' => 0,
-    'supersector' => 0,
-    'tags' => 0,
-    'theme' => 0,
-    'type_partner' => 0,
-  );
   /* Field: Content: Sticky */
   $handler->display->display_options['fields']['sticky']['id'] = 'sticky';
   $handler->display->display_options['fields']['sticky']['table'] = 'node';
@@ -1093,30 +1003,6 @@ if (user_access("create pum_portal_blog content")) {
   $handler->display->display_options['fields']['comment_count']['separator'] = '';
   $handler->display->display_options['fields']['comment_count']['format_plural'] = TRUE;
   $handler->display->display_options['fields']['comment_count']['prefix'] = '&#128172;';
-  /* Field: Content: All taxonomy terms */
-  $handler->display->display_options['fields']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['fields']['term_node_tid']['label'] = '';
-  $handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['term_node_tid']['element_type'] = 'em';
-  $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
-  $handler->display->display_options['fields']['term_node_tid']['limit'] = TRUE;
-  $handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
-    'countries' => 'countries',
-    'pum_generic' => 'pum_generic',
-    'private_group' => 'private_group',
-    'sector' => 'sector',
-    'faq_category' => 0,
-    'manual' => 0,
-    'portal_type' => 0,
-    'region' => 0,
-    'supersector' => 0,
-    'tags' => 0,
-    'theme' => 0,
-    'type_partner' => 0,
-  );
   /* Field: Content: Sticky */
   $handler->display->display_options['fields']['sticky']['id'] = 'sticky';
   $handler->display->display_options['fields']['sticky']['table'] = 'node';
@@ -6779,6 +6665,17 @@ return implode("+",$tids);';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
+  /* Field: Taxonomy term: Segment ID */
+  $handler->display->display_options['fields']['field_pum_segment_id']['id'] = 'field_pum_segment_id';
+  $handler->display->display_options['fields']['field_pum_segment_id']['table'] = 'field_data_field_pum_segment_id';
+  $handler->display->display_options['fields']['field_pum_segment_id']['field'] = 'field_pum_segment_id';
+  $handler->display->display_options['fields']['field_pum_segment_id']['label'] = '';
+  $handler->display->display_options['fields']['field_pum_segment_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_pum_segment_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_pum_segment_id']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
   /* Sort criterion: Taxonomy term: Name */
   $handler->display->display_options['sorts']['name']['id'] = 'name';
   $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
@@ -6790,9 +6687,38 @@ return implode("+",$tids);';
   $handler->display->display_options['filters']['machine_name']['value'] = array(
     'sector' => 'sector',
   );
+  /* Filter criterion: Active sector filter */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'Active sector filter';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'try {
+    $term = taxonomy_term_load($row->field_pum_segment_id);
+    $term_load = field_get_items(\'taxonomy_term\', $term, \'field_pum_segment_id\');
+    if(!empty($term_load[0][\'value\'])) {
+    $params = array(
+      \'version\' => 3,
+      \'sequential\' => 1,
+      \'id\' => $term_load[0][\'value\'],
+    );
+    $result = civicrm_api(\'Segment\', \'getsingle\', $params);
+    }
+    if(!empty($result[\'is_active\']) && $result[\'is_active\'] == \'1\') {
+      return FALSE;
+    } else {
+      return TRUE;
+    }
+  } catch (Exception $e) {
+  }';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Taxonomy term: Name */
+  $handler->display->display_options['sorts']['name']['id'] = 'name';
+  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['name']['field'] = 'name';
   $handler->display->display_options['path'] = 'portal/sectors';
   $translatables['portal_sections'] = array(
     t('Master'),
