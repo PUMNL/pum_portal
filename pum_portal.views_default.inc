@@ -5329,6 +5329,14 @@ return implode("+",$tids);';
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  /* Sort criterion: Taxonomy vocabulary: Weight */
+  $handler->display->display_options['sorts']['weight_1']['id'] = 'weight_1';
+  $handler->display->display_options['sorts']['weight_1']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['sorts']['weight_1']['field'] = 'weight';
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
@@ -5337,7 +5345,13 @@ return implode("+",$tids);';
     'countries' => 'countries',
   );
   $handler->display->display_options['filters']['machine_name']['group'] = 1;
-
+  /* Filter criterion: Taxonomy term: Country Active (field_country_active) */
+  $handler->display->display_options['filters']['field_country_active_value']['id'] = 'field_country_active_value';
+  $handler->display->display_options['filters']['field_country_active_value']['table'] = 'field_data_field_country_active';
+  $handler->display->display_options['filters']['field_country_active_value']['field'] = 'field_country_active_value';
+  $handler->display->display_options['filters']['field_country_active_value']['value'] = array(
+    1 => '1',
+  );
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -5346,6 +5360,11 @@ return implode("+",$tids);';
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Taxonomy term: Name */
+  $handler->display->display_options['sorts']['name']['id'] = 'name';
+  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['name']['field'] = 'name';
   $handler->display->display_options['path'] = 'portal/countries';
   $translatables['portal_countries'] = array(
     t('Master'),
