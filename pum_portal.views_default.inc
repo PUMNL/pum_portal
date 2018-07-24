@@ -5312,7 +5312,7 @@ return implode("+",$tids);';
   $handler->display->display_options['title'] = 'Country communities';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('administrator','Anamon','BCD','Business Development','Country Coordinator','CV Intake','Expert','Finance','Finance Admin','Gebruikers Vertegenwoordiger','Grant Coordinator','IT','Moderator','P&O','PR','Prof','PUM Management','Recruitment Team Member','Representative','Secretariat','Sector Coordinator','SSO'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
