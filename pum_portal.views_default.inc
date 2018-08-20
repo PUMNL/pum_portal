@@ -7351,12 +7351,12 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['table'] = 'field_data_field_pum_user_sector';
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['field'] = 'field_pum_user_sector_tid';
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['relationship'] = 'drupal_id';
-  $handler->display->display_options['filters']['field_pum_user_sector_tid']['value'] = '';
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['operator_id'] = 'field_pum_user_sector_tid_op';
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['label'] = 'Sector';
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['operator'] = 'field_pum_user_sector_tid_op';
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['identifier'] = 'field_pum_user_sector_tid';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -7368,6 +7368,24 @@ View members of <?php print $tname; ?>
     8 => 0,
     9 => 0,
     10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
   );
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_pum_user_sector_tid']['vocabulary'] = 'sector';
@@ -7510,6 +7528,7 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['field_pum_user_sector']['relationship'] = 'drupal_id';
   $handler->display->display_options['fields']['field_pum_user_sector']['label'] = 'Sector';
   $handler->display->display_options['fields']['field_pum_user_sector']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_pum_user_sector']['delta_offset'] = '0';
   /* Field: CiviCRM Address: Country */
   $handler->display->display_options['fields']['country']['id'] = 'country';
   $handler->display->display_options['fields']['country']['table'] = 'civicrm_address';
