@@ -2456,6 +2456,107 @@ print l("+ Add Document","node/add/pum-portal-document");
   $handler->display->display_options['fields']['changed']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'pum_portal_news' => 'pum_portal_news',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = '';
+  $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'countries';
+  /* Filter criterion: Field: Sector (field_pum_sector) */
+  $handler->display->display_options['filters']['field_pum_sector_tid']['id'] = 'field_pum_sector_tid';
+  $handler->display->display_options['filters']['field_pum_sector_tid']['table'] = 'field_data_field_pum_sector';
+  $handler->display->display_options['filters']['field_pum_sector_tid']['field'] = 'field_pum_sector_tid';
+  $handler->display->display_options['filters']['field_pum_sector_tid']['exposed'] = TRUE;
+
+  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['operator_id'] = 'field_pum_sector_tid_op';
+  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['label'] = 'Sector';
+  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['operator'] = 'field_pum_sector_tid_op';
+  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['identifier'] = 'field_pum_sector_tid';
+  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  $handler->display->display_options['filters']['field_pum_sector_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pum_sector_tid']['vocabulary'] = 'sector';
   $handler->display->display_options['path'] = 'portal/news';
 
   /* Display: Block */
