@@ -7556,6 +7556,7 @@ View members of <?php print $tname; ?>
     29 => 0,
     30 => 0,
   );
+
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -7572,20 +7573,41 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['image_URL']['label'] = '';
   $handler->display->display_options['fields']['image_URL']['exclude'] = TRUE;
   $handler->display->display_options['fields']['image_URL']['element_label_colon'] = FALSE;
-  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['image_URL']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['image_URL']['hide_alter_empty'] = FALSE;
+  /* Field: Contact Image */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['ui_name'] = 'Contact Image';
   $handler->display->display_options['fields']['php']['label'] = '';
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
-  if ($row->image_URL) {
-    print theme(\'imagecache_external\', array(\'path\' => $row->image_URL, \'style_name\'=> \'portal_directory\'));
+$img_silhouet = theme(\'image\', array(\'path\' => drupal_get_path(\'theme\', \'pum\') . \'/images/image-silhouet.png\', \'style_name\'=> \'portal_directory\'));
+if (!empty($row->image_URL)) {
+  if(strlen($row->image_URL) > 3) {
+    //make sure image is not corrupt and can be displayed
+    try {
+      $img = theme(\'imagecache_external\', array(\'path\' => $row->image_URL, \'style_name\'=> \'portal_directory\'));
+      if (!empty($img)) {
+        print $img;
+      } else {
+        print $img_silhouet;
+      }
+    } catch (Exception $e) {
+      print $img_silhouet;
+    }
+  } else {
+    if(!empty($img)) {
+      print $img;
+    } else {
+      print $img_silhouet;
+    }
   }
-  else {
-    print \'<img src="/sites/all/themes/pum/images/image-silhouet.jpg" />\';
-  }
+} else {
+  print $img_silhouet;
+}
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
@@ -7599,29 +7621,42 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
   $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['label'] = 'Full Name';
+  $handler->display->display_options['fields']['display_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
-  /* Field: User: Roles */
-  $handler->display->display_options['fields']['rid']['id'] = 'rid';
-  $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
-  $handler->display->display_options['fields']['rid']['field'] = 'rid';
-  $handler->display->display_options['fields']['rid']['relationship'] = 'drupal_id';
-  $handler->display->display_options['fields']['rid']['exclude'] = TRUE;
   /* Field: User: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
   $handler->display->display_options['fields']['mail']['relationship'] = 'drupal_id';
+  $handler->display->display_options['fields']['mail']['exclude'] = TRUE;
   /* Field: CiviCRM Phone Details: Phone Number */
   $handler->display->display_options['fields']['phone']['id'] = 'phone';
   $handler->display->display_options['fields']['phone']['table'] = 'civicrm_phone';
   $handler->display->display_options['fields']['phone']['field'] = 'phone';
   $handler->display->display_options['fields']['phone']['label'] = 'Phone';
+  $handler->display->display_options['fields']['phone']['exclude'] = TRUE;
   $handler->display->display_options['fields']['phone']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['phone']['location_type'] = '0';
   $handler->display->display_options['fields']['phone']['location_op'] = '0';
   $handler->display->display_options['fields']['phone']['is_primary'] = 1;
   $handler->display->display_options['fields']['phone']['phone_type'] = '0';
-  $handler->display->display_options['path'] = 'portal/directory';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['fields']['php_1']['table'] = 'views';
+  $handler->display->display_options['fields']['php_1']['field'] = 'php';
+  $handler->display->display_options['fields']['php_1']['label'] = 'Contact Information';
+  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
+  echo $row->display_name.\'<br /><a href="mailto:\'.$row->mail.\'">\';
+  if(strlen($row->mail) > 25) {
+  echo substr($row->mail,0,25).\'...\';
+  } else {
+  echo $row->mail;
+  }
+  echo \'</a><br />\'.$row->phone;
+  ?>';
+  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
   /* Field: User: User Sector */
   $handler->display->display_options['fields']['field_pum_user_sector']['id'] = 'field_pum_user_sector';
   $handler->display->display_options['fields']['field_pum_user_sector']['table'] = 'field_data_field_pum_user_sector';
@@ -7630,6 +7665,12 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['fields']['field_pum_user_sector']['label'] = 'Sector';
   $handler->display->display_options['fields']['field_pum_user_sector']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_pum_user_sector']['delta_offset'] = '0';
+  /* Field: User: Roles */
+  $handler->display->display_options['fields']['rid']['id'] = 'rid';
+  $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['fields']['rid']['field'] = 'rid';
+  $handler->display->display_options['fields']['rid']['relationship'] = 'drupal_id';
+  $handler->display->display_options['fields']['rid']['exclude'] = TRUE;
   /* Field: CiviCRM Address: Country */
   $handler->display->display_options['fields']['country']['id'] = 'country';
   $handler->display->display_options['fields']['country']['table'] = 'civicrm_address';
@@ -7645,6 +7686,169 @@ View members of <?php print $tname; ?>
   $handler->display->display_options['sorts']['last_name']['id'] = 'last_name';
   $handler->display->display_options['sorts']['last_name']['table'] = 'civicrm_contact';
   $handler->display->display_options['sorts']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: CiviCRM Contacts: Display Name */
+  $handler->display->display_options['filters']['display_name']['id'] = 'display_name';
+  $handler->display->display_options['filters']['display_name']['table'] = 'civicrm_contact';
+  $handler->display->display_options['filters']['display_name']['field'] = 'display_name';
+  $handler->display->display_options['filters']['display_name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['display_name']['group'] = 1;
+  $handler->display->display_options['filters']['display_name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['display_name']['expose']['operator_id'] = 'display_name_op';
+  $handler->display->display_options['filters']['display_name']['expose']['label'] = 'Full Name Contains';
+  $handler->display->display_options['filters']['display_name']['expose']['operator'] = 'display_name_op';
+  $handler->display->display_options['filters']['display_name']['expose']['identifier'] = 'display_name';
+  $handler->display->display_options['filters']['display_name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  /* Filter criterion: User: User Sector (field_pum_user_sector) */
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['id'] = 'field_pum_user_sector_tid';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['table'] = 'field_data_field_pum_user_sector';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['field'] = 'field_pum_user_sector_tid';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['relationship'] = 'drupal_id';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['operator_id'] = 'field_pum_user_sector_tid_op';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['label'] = 'Sector';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['operator'] = 'field_pum_user_sector_tid_op';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['identifier'] = 'field_pum_user_sector_tid';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['vocabulary'] = 'sector';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid']['error_message'] = FALSE;
+  /* Filter criterion: User: Roles */
+  $handler->display->display_options['filters']['rid']['id'] = 'rid';
+  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['filters']['rid']['field'] = 'rid';
+  $handler->display->display_options['filters']['rid']['relationship'] = 'drupal_id';
+  $handler->display->display_options['filters']['rid']['operator'] = 'not';
+  $handler->display->display_options['filters']['rid']['value'] = array(
+    4 => 4,
+  );
+  $handler->display->display_options['filters']['rid']['group'] = 1;
+  /* Filter criterion: CiviCRM Contacts: Is Deceased */
+  $handler->display->display_options['filters']['is_deceased']['id'] = 'is_deceased';
+  $handler->display->display_options['filters']['is_deceased']['table'] = 'civicrm_contact';
+  $handler->display->display_options['filters']['is_deceased']['field'] = 'is_deceased';
+  $handler->display->display_options['filters']['is_deceased']['value'] = '0';
+  $handler->display->display_options['filters']['is_deceased']['group'] = 1;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'drupal_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  /* Filter criterion: User: E-mail */
+  $handler->display->display_options['filters']['mail']['id'] = 'mail';
+  $handler->display->display_options['filters']['mail']['table'] = 'users';
+  $handler->display->display_options['filters']['mail']['field'] = 'mail';
+  $handler->display->display_options['filters']['mail']['relationship'] = 'drupal_id';
+  $handler->display->display_options['filters']['mail']['operator'] = 'not_ends';
+  $handler->display->display_options['filters']['mail']['value'] = '@example.com';
+  $handler->display->display_options['filters']['mail']['group'] = 1;
+  /* Filter criterion: CiviCRM Address: Country */
+  $handler->display->display_options['filters']['country']['id'] = 'country';
+  $handler->display->display_options['filters']['country']['table'] = 'civicrm_address';
+  $handler->display->display_options['filters']['country']['field'] = 'country';
+  $handler->display->display_options['filters']['country']['group'] = 1;
+  $handler->display->display_options['filters']['country']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['country']['expose']['operator_id'] = 'country_op';
+  $handler->display->display_options['filters']['country']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['country']['expose']['operator'] = 'country_op';
+  $handler->display->display_options['filters']['country']['expose']['identifier'] = 'country';
+  $handler->display->display_options['filters']['country']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['country']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  /* Filter criterion: CiviCRM Address: Country */
+  $handler->display->display_options['filters']['country_1']['id'] = 'country_1';
+  $handler->display->display_options['filters']['country_1']['table'] = 'civicrm_address';
+  $handler->display->display_options['filters']['country_1']['field'] = 'country';
+  $handler->display->display_options['filters']['country_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['country_1']['group'] = 2;
+  /* Filter criterion: User: User Sector (field_pum_user_sector) */
+  $handler->display->display_options['filters']['field_pum_user_sector_tid_1']['id'] = 'field_pum_user_sector_tid_1';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid_1']['table'] = 'field_data_field_pum_user_sector';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid_1']['field'] = 'field_pum_user_sector_tid';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid_1']['relationship'] = 'drupal_id';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid_1']['value'] = '';
+  $handler->display->display_options['filters']['field_pum_user_sector_tid_1']['group'] = 2;
+  $handler->display->display_options['filters']['field_pum_user_sector_tid_1']['vocabulary'] = 'sector';
+  $handler->display->display_options['path'] = 'portal/directory';
+
   $translatables['pum_portal_directory'] = array(
     t('Master'),
     t('Directory'),
