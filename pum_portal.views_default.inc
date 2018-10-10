@@ -9047,5 +9047,112 @@ if (user_access("create pum_forum_item content")) {
   );
   $export['sector_coordinator'] = $view;
 
+  $view = new view();
+  $view->name = 'policies';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Policies';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Policies';
+  $handler->display->display_options['css_class'] = 'all-topics';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Comment count */
+  $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
+  $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
+  $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
+  $handler->display->display_options['fields']['comment_count']['label'] = '';
+  $handler->display->display_options['fields']['comment_count']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['comment_count']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['comment_count']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['comment_count']['separator'] = '';
+  $handler->display->display_options['fields']['comment_count']['format_plural'] = TRUE;
+  $handler->display->display_options['fields']['comment_count']['prefix'] = '&#128172;';
+  /* Field: Content: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'node';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = '';
+  $handler->display->display_options['fields']['changed']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'short';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'pum_portal_document' => 'pum_portal_document',
+  );
+  /* Filter criterion: Content: Document type (field_document_type) */
+  $handler->display->display_options['filters']['field_document_type_tid']['id'] = 'field_document_type_tid';
+  $handler->display->display_options['filters']['field_document_type_tid']['table'] = 'field_data_field_document_type';
+  $handler->display->display_options['filters']['field_document_type_tid']['field'] = 'field_document_type_tid';
+  $handler->display->display_options['filters']['field_document_type_tid']['value'] = array(
+    0 => '2195',
+  );
+  $handler->display->display_options['filters']['field_document_type_tid']['vocabulary'] = 'portal_type';
+  /* Filter criterion: Field: General Community (field_pum_generic) */
+  $handler->display->display_options['filters']['field_pum_generic_tid']['id'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['table'] = 'field_data_field_pum_generic';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['field'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator_id'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['label'] = 'General Community';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['identifier'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['remember_roles'] = pum_portal_get_role_ids(array('authenticated user'));
+  $handler->display->display_options['filters']['field_pum_generic_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['vocabulary'] = 'pum_generic';
+  /* Filter criterion: Field: Private topic (field_pum_private) */
+  $handler->display->display_options['filters']['field_pum_private_tid']['id'] = 'field_pum_private_tid';
+  $handler->display->display_options['filters']['field_pum_private_tid']['table'] = 'field_data_field_pum_private';
+  $handler->display->display_options['filters']['field_pum_private_tid']['field'] = 'field_pum_private_tid';
+  $handler->display->display_options['filters']['field_pum_private_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pum_private_tid']['expose']['operator_id'] = 'field_pum_private_tid_op';
+  $handler->display->display_options['filters']['field_pum_private_tid']['expose']['label'] = 'Private Community';
+  $handler->display->display_options['filters']['field_pum_private_tid']['expose']['operator'] = 'field_pum_private_tid_op';
+  $handler->display->display_options['filters']['field_pum_private_tid']['expose']['identifier'] = 'field_pum_private_tid';
+  $handler->display->display_options['filters']['field_pum_private_tid']['expose']['remember_roles'] = pum_portal_get_role_ids(array('authenticated user'));
+  $handler->display->display_options['filters']['field_pum_private_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pum_private_tid']['vocabulary'] = 'private_group';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'portal/policies';
+  $export['policies'] = $view;
+
   return $export;
 }
