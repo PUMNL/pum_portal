@@ -1,7 +1,7 @@
 name = Pum Portal
 core = 7.x
 package = Features
-version = "7.x-1.14.9"
+version = "7.x-2.3.8"
 project = pum_portal
 dependencies[] = abt
 dependencies[] = apachesolr
