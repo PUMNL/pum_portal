@@ -1,7 +1,7 @@
 name = Pum Portal
 core = 7.x
 package = Features
-version = "7.x-1.14.8"
+version = "7.x-1.14.9"
 project = pum_portal
 dependencies[] = abt
 dependencies[] = apachesolr
@@ -19,7 +19,6 @@ dependencies[] = facetapi_bonus
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = file
-dependencies[] = flag
 dependencies[] = i18n_field
 dependencies[] = i18n_taxonomy
 dependencies[] = image
