@@ -330,6 +330,8 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['empty']['php']['id'] = 'php';
   $handler->display->display_options['empty']['php']['table'] = 'views';
   $handler->display->display_options['empty']['php']['field'] = 'php';
+  $handler->display->display_options['empty']['php']['empty'] = TRUE;
+  $handler->display->display_options['empty']['php']['php_output'] = '';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
@@ -592,49 +594,6 @@ function pum_portal_views_default_views() {
     30 => 0,
   );
   $handler->display->display_options['filters']['tid_2']['vocabulary'] = 'tags';
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
-  );
-  $handler->display->display_options['filters']['language']['group'] = 1;
-  $handler->display->display_options['filters']['language']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['language']['expose']['operator_id'] = 'language_op';
-  $handler->display->display_options['filters']['language']['expose']['label'] = 'Language';
-  $handler->display->display_options['filters']['language']['expose']['operator'] = 'language_op';
-  $handler->display->display_options['filters']['language']['expose']['identifier'] = 'language';
-  $handler->display->display_options['filters']['language']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-    12 => 0,
-    14 => 0,
-    15 => 0,
-    16 => 0,
-    17 => 0,
-    18 => 0,
-    20 => 0,
-    21 => 0,
-    22 => 0,
-    23 => 0,
-    24 => 0,
-    25 => 0,
-    26 => 0,
-    27 => 0,
-    28 => 0,
-    29 => 0,
-    30 => 0,
-  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -644,6 +603,17 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'More';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: PHP */
+  $handler->display->display_options['empty']['php']['id'] = 'php';
+  $handler->display->display_options['empty']['php']['table'] = 'views';
+  $handler->display->display_options['empty']['php']['field'] = 'php';
+  $handler->display->display_options['empty']['php']['empty'] = TRUE;
+  $handler->display->display_options['empty']['php']['php_output'] = '<?php
+  if (user_access("create pum_portal_blog content")) {
+    print l("+ Add Blog","node/add/pum-portal-blog");
+  }
+?>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -1285,11 +1255,234 @@ if (user_access("create pum_portal_blog content")) {
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'pum_portal_document' => 'pum_portal_document',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = '';
+  $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'countries';
+  /* Filter criterion: Field: General Community (field_pum_generic) */
+  $handler->display->display_options['filters']['field_pum_generic_tid']['id'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['table'] = 'field_data_field_pum_generic';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['field'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator_id'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['label'] = 'General Community';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['identifier'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  $handler->display->display_options['filters']['field_pum_generic_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['vocabulary'] = 'pum_generic';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_1']['id'] = 'tid_1';
+  $handler->display->display_options['filters']['tid_1']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_1']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_1']['value'] = '';
+  $handler->display->display_options['filters']['tid_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_1']['expose']['operator_id'] = 'tid_1_op';
+  $handler->display->display_options['filters']['tid_1']['expose']['label'] = 'Sector';
+  $handler->display->display_options['filters']['tid_1']['expose']['operator'] = 'tid_1_op';
+  $handler->display->display_options['filters']['tid_1']['expose']['identifier'] = 'tid_1';
+  $handler->display->display_options['filters']['tid_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  $handler->display->display_options['filters']['tid_1']['vocabulary'] = 'sector';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_2']['id'] = 'tid_2';
+  $handler->display->display_options['filters']['tid_2']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_2']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_2']['expose']['operator_id'] = 'tid_2_op';
+  $handler->display->display_options['filters']['tid_2']['expose']['label'] = 'Document Type';
+  $handler->display->display_options['filters']['tid_2']['expose']['operator'] = 'tid_2_op';
+  $handler->display->display_options['filters']['tid_2']['expose']['identifier'] = 'tid_2';
+  $handler->display->display_options['filters']['tid_2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  $handler->display->display_options['filters']['tid_2']['type'] = 'select';
+  $handler->display->display_options['filters']['tid_2']['vocabulary'] = 'portal_type';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_3']['id'] = 'tid_3';
+  $handler->display->display_options['filters']['tid_3']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_3']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_3']['value'] = '';
+  $handler->display->display_options['filters']['tid_3']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_3']['expose']['operator_id'] = 'tid_3_op';
+  $handler->display->display_options['filters']['tid_3']['expose']['label'] = 'Tag';
+  $handler->display->display_options['filters']['tid_3']['expose']['operator'] = 'tid_3_op';
+  $handler->display->display_options['filters']['tid_3']['expose']['identifier'] = 'tid_3';
+  $handler->display->display_options['filters']['tid_3']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  $handler->display->display_options['filters']['tid_3']['vocabulary'] = 'tags';
   $handler->display->display_options['path'] = 'portal/latest-documents';
 
   /* Display: Block */
@@ -1618,6 +1811,17 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['fields']['changed']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Sticky */
+  $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['table'] = 'node';
+  $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
@@ -1653,12 +1857,13 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid']['value'] = '';
+  $handler->display->display_options['filters']['tid']['group'] = 1;
   $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['label'] = 'Country';
   $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1689,12 +1894,58 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
     29 => 0,
     30 => 0,
   );
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'countries';
+  $handler->display->display_options['filters']['tid']['error_message'] = FALSE;
+  /* Filter criterion: Field: General Community (field_pum_generic) */
+  $handler->display->display_options['filters']['field_pum_generic_tid']['id'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['table'] = 'field_data_field_pum_generic';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['field'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_pum_generic_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator_id'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['label'] = 'General Community';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['identifier'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+
+  $handler->display->display_options['filters']['field_pum_generic_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['vocabulary'] = 'pum_generic';
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid_1']['id'] = 'tid_1';
   $handler->display->display_options['filters']['tid_1']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid_1']['field'] = 'tid';
   $handler->display->display_options['filters']['tid_1']['value'] = '';
+  $handler->display->display_options['filters']['tid_1']['group'] = 1;
   $handler->display->display_options['filters']['tid_1']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid_1']['expose']['operator_id'] = 'tid_1_op';
   $handler->display->display_options['filters']['tid_1']['expose']['label'] = 'Sector';
@@ -1735,6 +1986,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['filters']['tid_2']['id'] = 'tid_2';
   $handler->display->display_options['filters']['tid_2']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid_2']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_2']['group'] = 1;
   $handler->display->display_options['filters']['tid_2']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid_2']['expose']['operator_id'] = 'tid_2_op';
   $handler->display->display_options['filters']['tid_2']['expose']['label'] = 'Document Type';
@@ -1777,6 +2029,7 @@ print l("+ Add ".$termname." Document","node/add/pum-portal-document", array("qu
   $handler->display->display_options['filters']['tid_3']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid_3']['field'] = 'tid';
   $handler->display->display_options['filters']['tid_3']['value'] = '';
+  $handler->display->display_options['filters']['tid_3']['group'] = 1;
   $handler->display->display_options['filters']['tid_3']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid_3']['expose']['operator_id'] = 'tid_3_op';
   $handler->display->display_options['filters']['tid_3']['expose']['label'] = 'Tag';
@@ -1918,7 +2171,7 @@ if (user_access("create pum_portal_document content")) {
   $handler->display->display_options['fields']['term_node_tid']['type'] = 'ul';
   $handler->display->display_options['fields']['term_node_tid']['separator'] = ' - ';
   $handler->display->display_options['fields']['term_node_tid']['limit'] = TRUE;
-$handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
+  $handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
   'countries' => 'countries',
   'pum_generic' => 'pum_generic',
   'private_group' => 'private_group',
@@ -1953,6 +2206,17 @@ $handler->display->display_options['fields']['term_node_tid']['vocabularies'] = 
   $handler->display->display_options['fields']['changed']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Sticky */
+  $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['table'] = 'node';
+  $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
@@ -2070,13 +2334,13 @@ print l("+ Add Document","node/add/pum-portal-document");
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid']['value'] = '';
   $handler->display->display_options['filters']['tid']['group'] = 1;
   $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['label'] = 'Country';
   $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -2088,8 +2352,70 @@ print l("+ Add Document","node/add/pum-portal-document");
     8 => 0,
     9 => 0,
     10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
   );
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'countries';
+  $handler->display->display_options['filters']['tid']['error_message'] = FALSE;
+  /* Filter criterion: Field: General Community (field_pum_generic) */
+  $handler->display->display_options['filters']['field_pum_generic_tid']['id'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['table'] = 'field_data_field_pum_generic';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['field'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_pum_generic_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator_id'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['label'] = 'General Community';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['identifier'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+  );
+  $handler->display->display_options['filters']['field_pum_generic_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['vocabulary'] = 'pum_generic';
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid_1']['id'] = 'tid_1';
   $handler->display->display_options['filters']['tid_1']['table'] = 'taxonomy_index';
@@ -2101,6 +2427,7 @@ print l("+ Add Document","node/add/pum-portal-document");
   $handler->display->display_options['filters']['tid_1']['expose']['label'] = 'Sector';
   $handler->display->display_options['filters']['tid_1']['expose']['operator'] = 'tid_1_op';
   $handler->display->display_options['filters']['tid_1']['expose']['identifier'] = 'tid_1';
+  $handler->display->display_options['filters']['tid_1']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['tid_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -2112,13 +2439,30 @@ print l("+ Add Document","node/add/pum-portal-document");
     8 => 0,
     9 => 0,
     10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
   );
   $handler->display->display_options['filters']['tid_1']['vocabulary'] = 'sector';
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid_2']['id'] = 'tid_2';
   $handler->display->display_options['filters']['tid_2']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid_2']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid_2']['value'] = '';
   $handler->display->display_options['filters']['tid_2']['group'] = 1;
   $handler->display->display_options['filters']['tid_2']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid_2']['expose']['operator_id'] = 'tid_2_op';
@@ -2136,6 +2480,24 @@ print l("+ Add Document","node/add/pum-portal-document");
     8 => 0,
     9 => 0,
     10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
   );
   $handler->display->display_options['filters']['tid_2']['type'] = 'select';
   $handler->display->display_options['filters']['tid_2']['vocabulary'] = 'portal_type';
@@ -2144,11 +2506,13 @@ print l("+ Add Document","node/add/pum-portal-document");
   $handler->display->display_options['filters']['tid_3']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid_3']['field'] = 'tid';
   $handler->display->display_options['filters']['tid_3']['value'] = '';
+  $handler->display->display_options['filters']['tid_3']['group'] = 1;
   $handler->display->display_options['filters']['tid_3']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid_3']['expose']['operator_id'] = 'tid_3_op';
   $handler->display->display_options['filters']['tid_3']['expose']['label'] = 'Tag';
   $handler->display->display_options['filters']['tid_3']['expose']['operator'] = 'tid_3_op';
   $handler->display->display_options['filters']['tid_3']['expose']['identifier'] = 'tid_3';
+  $handler->display->display_options['filters']['tid_3']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['tid_3']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -2160,6 +2524,24 @@ print l("+ Add Document","node/add/pum-portal-document");
     8 => 0,
     9 => 0,
     10 => 0,
+    11 => 0,
+    12 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
   );
   $handler->display->display_options['filters']['tid_3']['vocabulary'] = 'tags';
   $handler->display->display_options['path'] = 'portal/library';
@@ -2394,6 +2776,25 @@ print l("+ Add Document","node/add/pum-portal-document");
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: PHP */
+  $handler->display->display_options['empty']['php']['id'] = 'php';
+  $handler->display->display_options['empty']['php']['table'] = 'views';
+  $handler->display->display_options['empty']['php']['field'] = 'php';
+  $handler->display->display_options['empty']['php']['empty'] = TRUE;
+  $handler->display->display_options['empty']['php']['php_output'] = '<div class="view-content">
+&nbsp;
+</div>
+<div class="view-footer">
+<?php
+  if (user_access("create pum_portal_news content")) {
+    print l("+ Add News Topic","node/add/pum-portal-news");
+  }
+  ?>
+  <div class="more-link">
+    <a href="/portal/news">More</a>
+  </div>
+</div>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -2472,91 +2873,221 @@ print l("+ Add Document","node/add/pum-portal-document");
   $handler->display->display_options['filters']['type']['value'] = array(
     'pum_portal_news' => 'pum_portal_news',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Has taxonomy term */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid']['value'] = '';
+  $handler->display->display_options['filters']['tid']['group'] = 1;
   $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['label'] = 'Country';
   $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-    12 => 0,
-    14 => 0,
-    15 => 0,
-    16 => 0,
-    17 => 0,
-    18 => 0,
-    20 => 0,
-    21 => 0,
-    22 => 0,
-    23 => 0,
-    24 => 0,
-    25 => 0,
-    26 => 0,
-    27 => 0,
-    28 => 0,
-    29 => 0,
-    30 => 0,
-  );
+  2 => '2',
+  1 => 0,
+  3 => 0,
+  4 => 0,
+  5 => 0,
+  6 => 0,
+  7 => 0,
+  8 => 0,
+  9 => 0,
+  10 => 0,
+  11 => 0,
+  12 => 0,
+  14 => 0,
+  15 => 0,
+  16 => 0,
+  17 => 0,
+  18 => 0,
+  20 => 0,
+  21 => 0,
+  22 => 0,
+  23 => 0,
+  24 => 0,
+  25 => 0,
+  26 => 0,
+  27 => 0,
+  28 => 0,
+  29 => 0,
+  30 => 0,
+);
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'countries';
-  /* Filter criterion: Field: Sector (field_pum_sector) */
-  $handler->display->display_options['filters']['field_pum_sector_tid']['id'] = 'field_pum_sector_tid';
-  $handler->display->display_options['filters']['field_pum_sector_tid']['table'] = 'field_data_field_pum_sector';
-  $handler->display->display_options['filters']['field_pum_sector_tid']['field'] = 'field_pum_sector_tid';
-  $handler->display->display_options['filters']['field_pum_sector_tid']['exposed'] = TRUE;
-
-  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['operator_id'] = 'field_pum_sector_tid_op';
-  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['label'] = 'Sector';
-  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['operator'] = 'field_pum_sector_tid_op';
-  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['identifier'] = 'field_pum_sector_tid';
-  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_pum_sector_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-    12 => 0,
-    14 => 0,
-    15 => 0,
-    16 => 0,
-    17 => 0,
-    18 => 0,
-    20 => 0,
-    21 => 0,
-    22 => 0,
-    23 => 0,
-    24 => 0,
-    25 => 0,
-    26 => 0,
-    27 => 0,
-    28 => 0,
-    29 => 0,
-    30 => 0,
-  );
-  $handler->display->display_options['filters']['field_pum_sector_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_pum_sector_tid']['vocabulary'] = 'sector';
+  $handler->display->display_options['filters']['tid']['error_message'] = FALSE;
+  /* Filter criterion: Field: General Community (field_pum_generic) */
+  $handler->display->display_options['filters']['field_pum_generic_tid']['id'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['table'] = 'field_data_field_pum_generic';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['field'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_pum_generic_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator_id'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['label'] = 'General Community';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator'] = 'field_pum_generic_tid_op';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['identifier'] = 'field_pum_generic_tid';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  3 => 0,
+  4 => 0,
+  5 => 0,
+  6 => 0,
+  7 => 0,
+  8 => 0,
+  9 => 0,
+  10 => 0,
+  11 => 0,
+  12 => 0,
+  14 => 0,
+  15 => 0,
+  16 => 0,
+  17 => 0,
+  18 => 0,
+  20 => 0,
+  21 => 0,
+  22 => 0,
+  23 => 0,
+  24 => 0,
+  25 => 0,
+  26 => 0,
+  27 => 0,
+  28 => 0,
+  29 => 0,
+  30 => 0,
+);
+  $handler->display->display_options['filters']['field_pum_generic_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pum_generic_tid']['vocabulary'] = 'pum_generic';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_1']['id'] = 'tid_1';
+  $handler->display->display_options['filters']['tid_1']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_1']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_1']['value'] = '';
+  $handler->display->display_options['filters']['tid_1']['group'] = 1;
+  $handler->display->display_options['filters']['tid_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_1']['expose']['operator_id'] = 'tid_1_op';
+  $handler->display->display_options['filters']['tid_1']['expose']['label'] = 'Sector';
+  $handler->display->display_options['filters']['tid_1']['expose']['operator'] = 'tid_1_op';
+  $handler->display->display_options['filters']['tid_1']['expose']['identifier'] = 'tid_1';
+  $handler->display->display_options['filters']['tid_1']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid_1']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  3 => 0,
+  4 => 0,
+  5 => 0,
+  6 => 0,
+  7 => 0,
+  8 => 0,
+  9 => 0,
+  10 => 0,
+  11 => 0,
+  12 => 0,
+  14 => 0,
+  15 => 0,
+  16 => 0,
+  17 => 0,
+  18 => 0,
+  20 => 0,
+  21 => 0,
+  22 => 0,
+  23 => 0,
+  24 => 0,
+  25 => 0,
+  26 => 0,
+  27 => 0,
+  28 => 0,
+  29 => 0,
+  30 => 0,
+);
+  $handler->display->display_options['filters']['tid_1']['vocabulary'] = 'sector';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_3']['id'] = 'tid_3';
+  $handler->display->display_options['filters']['tid_3']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_3']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_3']['group'] = 1;
+  $handler->display->display_options['filters']['tid_3']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_3']['expose']['operator_id'] = 'tid_3_op';
+  $handler->display->display_options['filters']['tid_3']['expose']['label'] = 'Document Type';
+  $handler->display->display_options['filters']['tid_3']['expose']['operator'] = 'tid_3_op';
+  $handler->display->display_options['filters']['tid_3']['expose']['identifier'] = 'tid_3';
+  $handler->display->display_options['filters']['tid_3']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  3 => 0,
+  4 => 0,
+  5 => 0,
+  6 => 0,
+  7 => 0,
+  8 => 0,
+  9 => 0,
+  10 => 0,
+  11 => 0,
+  12 => 0,
+  14 => 0,
+  15 => 0,
+  16 => 0,
+  17 => 0,
+  18 => 0,
+  20 => 0,
+  21 => 0,
+  22 => 0,
+  23 => 0,
+  24 => 0,
+  25 => 0,
+  26 => 0,
+  27 => 0,
+  28 => 0,
+  29 => 0,
+  30 => 0,
+);
+  $handler->display->display_options['filters']['tid_3']['type'] = 'select';
+  $handler->display->display_options['filters']['tid_3']['vocabulary'] = 'portal_type';
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid_2']['id'] = 'tid_2';
+  $handler->display->display_options['filters']['tid_2']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_2']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid_2']['value'] = '';
+  $handler->display->display_options['filters']['tid_2']['group'] = 1;
+  $handler->display->display_options['filters']['tid_2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_2']['expose']['operator_id'] = 'tid_2_op';
+  $handler->display->display_options['filters']['tid_2']['expose']['label'] = 'Tag';
+  $handler->display->display_options['filters']['tid_2']['expose']['operator'] = 'tid_2_op';
+  $handler->display->display_options['filters']['tid_2']['expose']['identifier'] = 'tid_2';
+  $handler->display->display_options['filters']['tid_2']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid_2']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  3 => 0,
+  4 => 0,
+  5 => 0,
+  6 => 0,
+  7 => 0,
+  8 => 0,
+  9 => 0,
+  10 => 0,
+  11 => 0,
+  12 => 0,
+  14 => 0,
+  15 => 0,
+  16 => 0,
+  17 => 0,
+  18 => 0,
+  20 => 0,
+  21 => 0,
+  22 => 0,
+  23 => 0,
+  24 => 0,
+  25 => 0,
+  26 => 0,
+  27 => 0,
+  28 => 0,
+  29 => 0,
+  30 => 0,
+);
+  $handler->display->display_options['filters']['tid_2']['vocabulary'] = 'tags';
   $handler->display->display_options['path'] = 'portal/news';
 
   /* Display: Block */
@@ -7632,6 +8163,17 @@ if (!empty($row->image_URL)) {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: PHP */
+  $handler->display->display_options['empty']['php']['id'] = 'php';
+  $handler->display->display_options['empty']['php']['table'] = 'views';
+  $handler->display->display_options['empty']['php']['field'] = 'php';
+  $handler->display->display_options['empty']['php']['empty'] = TRUE;
+  $handler->display->display_options['empty']['php']['php_output'] = '<?php
+if (user_access("create pum_forum_item content")) {
+    print l("+ Add Forum Topic","node/add/pum-forum-item");
+}
+?>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
