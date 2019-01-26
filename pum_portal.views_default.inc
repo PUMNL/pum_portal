@@ -109,6 +109,7 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
   $handler->display->display_options['filters']['is_active']['value'] = '1';
+
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'country-experts';
@@ -197,12 +198,22 @@ function pum_portal_views_default_views() {
   /* Display: Block rep */
   $handler = $view->new_display('block', 'Block rep', 'block_2');
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: CiviCRM Relationships: Contact ID B */
+  $handler->display->display_options['fields']['contact_id_b_']['id'] = 'contact_id_b_';
+  $handler->display->display_options['fields']['contact_id_b_']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['fields']['contact_id_b_']['field'] = 'contact_id_b_';
+  $handler->display->display_options['fields']['contact_id_b_']['label'] = '';
+  $handler->display->display_options['fields']['contact_id_b_']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['contact_id_b_']['element_label_colon'] = FALSE;
   /* Field: CiviCRM Contacts: Display Name */
   $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
   $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['relationship'] = 'contact_id_b_';
   $handler->display->display_options['fields']['display_name']['label'] = 'Representative';
+  $handler->display->display_options['fields']['display_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['display_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['display_name']['alter']['path'] = 'portal/directory/[contact_id_b_]';
   $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
   /* Field: CiviCRM Relationships: Description */
   $handler->display->display_options['fields']['description']['id'] = 'description';
@@ -210,25 +221,62 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['fields']['description']['field'] = 'description';
   $handler->display->display_options['fields']['description']['label'] = '';
   $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: CiviCRM Relationships: Relationship Type A-to-B */
+  $handler->display->display_options['filters']['relationship_type']['id'] = 'relationship_type';
+  $handler->display->display_options['filters']['relationship_type']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['relationship_type']['field'] = 'relationship_type';
+  $handler->display->display_options['filters']['relationship_type']['value'] = array(
+    23 => '23',
+  );
+  /* Filter criterion: CiviCRM Relationships: Is Relationship Active */
+  $handler->display->display_options['filters']['is_active']['id'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['value'] = '1';
+  /* Filter criterion: CiviCRM Relationships: Case ID */
+  $handler->display->display_options['filters']['case_id']['id'] = 'case_id';
+  $handler->display->display_options['filters']['case_id']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['case_id']['field'] = 'case_id';
+  $handler->display->display_options['filters']['case_id']['operator'] = 'empty';
+  $handler->display->display_options['merge_rows'] = TRUE;
   $handler->display->display_options['field_config'] = array(
+    'contact_id_b_' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => ', ',
+    ),
     'display_name' => array(
       'merge_option' => 'merge_unique',
-      'separator' => '<br />',
+      'separator' => ',',
     ),
     'description' => array(
-      'merge_option' => 'merge_unique',
+      'merge_option' => 'first_value',
       'separator' => '<br />',
     ),
   );
+
   /* Display: Block po */
   $handler = $view->new_display('block', 'Block po', 'block_3');
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: CiviCRM Contacts: Contact ID */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'civicrm_contact';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['fields']['id']['relationship'] = 'contact_id_b_';
+  $handler->display->display_options['fields']['id']['label'] = '';
+  $handler->display->display_options['fields']['id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['id']['separator'] = '';
   /* Field: CiviCRM Contacts: Display Name */
   $handler->display->display_options['fields']['display_name']['id'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['table'] = 'civicrm_contact';
   $handler->display->display_options['fields']['display_name']['field'] = 'display_name';
   $handler->display->display_options['fields']['display_name']['relationship'] = 'contact_id_b_';
   $handler->display->display_options['fields']['display_name']['label'] = 'Project Officer';
+  $handler->display->display_options['fields']['display_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['display_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['display_name']['alter']['path'] = 'portal/directory/[id]';
   $handler->display->display_options['fields']['display_name']['link_to_civicrm_contact'] = 0;
   /* Field: CiviCRM Relationships: Description */
   $handler->display->display_options['fields']['description']['id'] = 'description';
