@@ -179,6 +179,16 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
   $handler->display->display_options['filters']['is_active']['value'] = '1';
+  /* Filter criterion: CiviCRM Relationships: Case ID */
+  $handler->display->display_options['filters']['case_id']['id'] = 'case_id';
+  $handler->display->display_options['filters']['case_id']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['case_id']['field'] = 'case_id';
+  $handler->display->display_options['filters']['case_id']['operator'] = 'empty';
+  /* Filter criterion: CiviCRM Relationships: End Date */
+  $handler->display->display_options['filters']['end_date']['id'] = 'end_date';
+  $handler->display->display_options['filters']['end_date']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['end_date']['field'] = 'end_date';
+  $handler->display->display_options['filters']['end_date']['operator'] = 'empty';
   $handler->display->display_options['merge_rows'] = TRUE;
   $handler->display->display_options['field_config'] = array(
     'id' => array(
@@ -240,14 +250,18 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['case_id']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['case_id']['field'] = 'case_id';
   $handler->display->display_options['filters']['case_id']['operator'] = 'empty';
-  $handler->display->display_options['merge_rows'] = TRUE;
+  /* Filter criterion: CiviCRM Relationships: End Date */
+  $handler->display->display_options['filters']['end_date']['id'] = 'end_date';
+  $handler->display->display_options['filters']['end_date']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['end_date']['field'] = 'end_date';
+  $handler->display->display_options['filters']['end_date']['operator'] = 'empty';
   $handler->display->display_options['field_config'] = array(
     'contact_id_b_' => array(
       'merge_option' => 'merge_unique',
       'separator' => ', ',
     ),
     'display_name' => array(
-      'merge_option' => 'merge_unique',
+      'merge_option' => 'first_value',
       'separator' => ',',
     ),
     'description' => array(
@@ -298,8 +312,21 @@ function pum_portal_views_default_views() {
   $handler->display->display_options['filters']['is_active']['table'] = 'civicrm_relationship';
   $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
   $handler->display->display_options['filters']['is_active']['value'] = '1';
-  $handler->display->display_options['merge_rows'] = TRUE;
+  /* Filter criterion: CiviCRM Cases: Case ID */
+  $handler->display->display_options['filters']['id']['id'] = 'id';
+  $handler->display->display_options['filters']['id']['table'] = 'civicrm_case';
+  $handler->display->display_options['filters']['id']['field'] = 'id';
+  $handler->display->display_options['filters']['id']['operator'] = 'empty';
+  /* Filter criterion: CiviCRM Relationships: End Date */
+  $handler->display->display_options['filters']['end_date']['id'] = 'end_date';
+  $handler->display->display_options['filters']['end_date']['table'] = 'civicrm_relationship';
+  $handler->display->display_options['filters']['end_date']['field'] = 'end_date';
+  $handler->display->display_options['filters']['end_date']['operator'] = 'empty';
   $handler->display->display_options['field_config'] = array(
+    'id' => array(
+      'merge_option' => 'merge_unique',
+      'separator' => ', ',
+    ),
     'display_name' => array(
       'merge_option' => 'merge_unique',
       'separator' => '<br />',
