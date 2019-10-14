@@ -9169,7 +9169,7 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['css_class'] = 'all-topics';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('authenticated user'));
+  $handler->display->display_options['access']['role'] = pum_portal_get_role_ids(array('administrator','Anamon','BCD','Business Development','Candidate expert','Corporate website user','Country Coordinator','CV Intake','Expert','Finance','Finance Admin','Gebruikers Vertegenwoordiger','Grant Coordinator','IT', 'Moderator','P&O','Partner contact','PR','Prof','PUM Management','Recruitment Team Member','Representative','Secretariat', 'Sector Coordinator','SSO'));
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -9208,7 +9208,7 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -9227,7 +9227,7 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['filters']['field_document_type_tid']['table'] = 'field_data_field_document_type';
   $handler->display->display_options['filters']['field_document_type_tid']['field'] = 'field_document_type_tid';
   $handler->display->display_options['filters']['field_document_type_tid']['value'] = array(
-    0 => '2195',
+    0 => '2257',
   );
   $handler->display->display_options['filters']['field_document_type_tid']['vocabulary'] = 'portal_type';
   /* Filter criterion: Field: General Community (field_pum_generic) */
@@ -9239,7 +9239,6 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['label'] = 'General Community';
   $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['operator'] = 'field_pum_generic_tid_op';
   $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['identifier'] = 'field_pum_generic_tid';
-  $handler->display->display_options['filters']['field_pum_generic_tid']['expose']['remember_roles'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['filters']['field_pum_generic_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_pum_generic_tid']['vocabulary'] = 'pum_generic';
   /* Filter criterion: Field: Private topic (field_pum_private) */
@@ -9251,7 +9250,6 @@ if (user_access("create pum_forum_item content")) {
   $handler->display->display_options['filters']['field_pum_private_tid']['expose']['label'] = 'Private Community';
   $handler->display->display_options['filters']['field_pum_private_tid']['expose']['operator'] = 'field_pum_private_tid_op';
   $handler->display->display_options['filters']['field_pum_private_tid']['expose']['identifier'] = 'field_pum_private_tid';
-  $handler->display->display_options['filters']['field_pum_private_tid']['expose']['remember_roles'] = pum_portal_get_role_ids(array('authenticated user'));
   $handler->display->display_options['filters']['field_pum_private_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_pum_private_tid']['vocabulary'] = 'private_group';
 
@@ -9261,7 +9259,7 @@ if (user_access("create pum_forum_item content")) {
 
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Policies';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '-50';
   $handler->display->display_options['menu']['name'] = 'menu-other';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
